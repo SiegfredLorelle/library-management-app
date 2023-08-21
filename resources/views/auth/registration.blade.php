@@ -18,10 +18,10 @@
     
                         <div class="d-flex align-items-center mb-3 pb-1">
                         <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                        <span class="h1 fw-bold mb-0">Logo</span>
+                        <span class="h1 fw-bold mb-0">Sign Up</span>
                         </div>
     
-                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign up to create your account</h5>
+                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">to     create account</h5>
     
                         <div class="form-outline mb-4">
                         <input type="text" id="form2Example17" class="form-control form-control-lg" name="name" />
@@ -48,12 +48,12 @@
                         </div>
                         
                         <div class="pt-1 mb-4">
-                            <input type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="submit">
+                            <input type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="Sign Up">
                         </div>
     
-                        <a class="small text-muted" href="#!">Forgot password?</a>
-                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!"
-                            style="color: #393f81;">Register here</a></p>
+                        {{-- <a class="small text-muted" href="#!">Forgot password?</a> --}}
+                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have an account? <a href="{{ url("/login") }}"
+                            style="color: #393f81;">Log in here</a></p>
 
                     </form>
     
