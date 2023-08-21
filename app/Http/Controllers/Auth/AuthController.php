@@ -59,9 +59,9 @@ class AuthController extends Controller
 
         $checkLoginCredentials = $request->only("email", "password");
         if (Auth::attempt($checkLoginCredentials)) {
-            return redirect("dashboard")->withSuccess ("You are registered logged in!");
+            return redirect("dashboard")->withSuccess("You are registered logged in!");
         }
-        return redirect("login")->withSuccess("Login credentials are incorrect.");
+        return redirect("login")->withErrors("Login credentials are incorrect.");
     }
 
     public function dashboard()

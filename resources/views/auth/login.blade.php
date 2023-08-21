@@ -23,7 +23,11 @@
                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">to access dashboard</h5>
                     @if (Session::has("success"))
                         <div class="alert alert-success">{{ Session::get("success") }}</div>
+                    {{-- @elseif (count($errors) > 0) --}}
+                    @elseif(Session::has("errors"))
+                        <div class="alert alert-danger">{{ Session::get("errors")->first() }}</div>
                     @endif
+
                     <div class="form-outline mb-4">
                         <input type="email" id="form2Example17" class="form-control form-control-lg" name="email"/>
                         <label class="form-label" for="form2Example17">Email address</label>

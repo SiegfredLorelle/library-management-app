@@ -61,12 +61,18 @@
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="{{ url("/login") }}">Home</a>
                 </li>
+                @guest
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ url("/login") }}">Login</a>
+                    <a class="nav-link" href="{{ url("/login") }}">Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ url("/registration") }}">Sign Up</a>
+                    <a class="nav-link" href="{{ url("/registration") }}">Sign Up</a>
                 </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url("/logout") }}">Logout</a>
+                </li>
+                @endguest
               </ul>
             </div>
           </div>
