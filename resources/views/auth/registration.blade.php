@@ -21,7 +21,7 @@
                         <span class="h1 fw-bold mb-0">Sign Up</span>
                         </div>
     
-                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">to     create account</h5>
+                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">to create account</h5>
     
                         <div class="form-outline mb-4">
                         <input type="text" id="form2Example17" class="form-control form-control-lg" name="name" />
