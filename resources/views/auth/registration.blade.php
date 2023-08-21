@@ -21,7 +21,7 @@
                         <span class="h1 fw-bold mb-0">Sign Up</span>
                         </div>
     
-                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">to create account</h5>
+                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">to create an account</h5>
     
                         <div class="form-outline mb-4">
                         <input type="text" id="form2Example17" class="form-control form-control-lg" name="name" />
@@ -53,7 +53,7 @@
     
                         {{-- <a class="small text-muted" href="#!">Forgot password?</a> --}}
                         <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have an account? <a href="{{ url("/login") }}"
-                            style="color: #393f81;">Log in here</a></p>
+                            style="color: #393f81;">Login here</a></p>
 
                     </form>
     
