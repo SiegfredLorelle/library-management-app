@@ -15,31 +15,30 @@
             </button>
         </div>
     
-        <button type="button" class="btn btn-dark w-auto m-2 me-0">+ Add Books</button>
-        <table class="table">
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Publication Company</th>
-                    <th scope="col">Publication Date</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ $abc }}</td>
-                    <td>{{ $abc }}</td>
-                    <td>{{ $abc }}</td>
-                    <td>{{ $abc }}</td>
-                    <td>{{ $abc }}</td>
-                    <td><button class="btn btn-primary">Edit</button></td>
-                    <td><button class="btn btn-primary">Delete</button></td>
-                </tr>
-            </tbody>
-          </table>
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Publication Company</th>
+                        <th scope="col">Publication Date</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ $abc }}</td>
+                        <td>{{ $abc }}</td>
+                        <td>{{ $abc }}</td>
+                        <td>{{ $abc }}</td>
+                        <td>{{ $abc }}</td>
+                        <td><button class="btn btn-primary">Edit</button></td>
+                        <td><button class="btn btn-primary">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
 
 
 
@@ -52,11 +51,35 @@
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Add Book</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            ...
+                <form class="row g-3">
+                    <div class="mb-3 mt-3 row">
+                        <label for="title" class="col-sm-4 col-form-label">Title</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="title">
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-3 row">
+                        <label for="author" class="col-sm-4 col-form-label">Author</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="author">
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-3 row">
+                        <label for="publication-company" class="col-sm-4 col-form-label">Publication Co.</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="publication-company">
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-3 row">
+                        <label for="publication-date" class="col-sm-4 col-form-label">Publication Date</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="publication-date">
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
