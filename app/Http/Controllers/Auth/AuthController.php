@@ -68,8 +68,8 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()) {
-            $abc = "ASDSADD";
-            return view("dashboard", ["abc" => $abc]);
+            $books = Book::orderby("title")->get();
+            return view("dashboard", ["books" => $books]);
         }
         else {
             return redirect("login")->withSuccess("Login to access the dashboard page.");
@@ -83,7 +83,15 @@ class AuthController extends Controller
 
     public function postAddBook(Request $request)
     {
-        $request->post('my_param');
+        $request->validate([
+            "title" => "required",
+            "author" => "required",
+            "publication_company" => "required",
+            'publication_date' => 'required|before:tomorrow'
+        ]);
+
+
+        // $request->post('my_param');
         $book = new Book;
         // echo $request->title;
         // echo $request->author;
@@ -95,7 +103,7 @@ class AuthController extends Controller
         $book->publication_date = $request->publication_date;
 
         $book->save();
-        return redirect("dashboard" )->withSuccess("Added");
+        return redirect("dashboard" )->withSuccess("Book added!");
 
         // return Book::create([
         //     "name" => $data["name"],

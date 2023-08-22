@@ -3,9 +3,24 @@
     <div class="container-fluid min-vh-100 d-flex flex-column justify-content-center">
         <h1 class="text-center">Dashboard Here</h1>
         <h2 class="text-center">"{{ auth()->user()->name }}" is logged in</h2>
-        <p class="text-center red">{{ $abc }}</p>
+        {{-- <p class="text-center red">{{ $abc }}</p> --}}
         <br><br>
         {{-- <button><p class="text-end"> + Add Books</p> --}}
+        @if ($errors->any())
+            <div>
+                {{-- <li>{{ $error }}</li> --}}
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <span>{{ $error }}</span>
+                    @endforeach
+                </div>
+            </div>
+
+        @elseif (Session::has("success"))
+            <div>
+                <div class="alert alert-success">{{ Session::get("success") }}</div>
+            </div>
+        @endif
 
 
             <!-- Button trigger modal -->
@@ -28,15 +43,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{{ $abc }}</td>
-                        <td>{{ $abc }}</td>
-                        <td>{{ $abc }}</td>
-                        <td>{{ $abc }}</td>
-                        <td>{{ $abc }}</td>
-                        <td><button class="btn btn-primary">Edit</button></td>
-                        <td><button class="btn btn-primary">Delete</button></td>
-                    </tr>
+                    @for ($i = 0; $i < count($books); $i++)
+                        <tr>
+                            <td>{{ $i + 1 }}</td>
+                            <td>{{ $books[$i]->title }}</td>
+                            <td>{{ $books[$i]->author }}</td>
+                            <td>{{ $books[$i]->publication_company }}</td>
+                            <td>{{ $books[$i]->publication_date }}</td>
+                            <td><button class="btn btn-primary">Edit</button></td>
+                            <td><button class="btn btn-primary">Delete</button></td>
+                        </tr>
+                    @endfor
                 </tbody>
             </table>
 
@@ -78,7 +95,7 @@
                     <div class="mb-3 mt-3 row">
                         <label for="publication-date" class="col-sm-4 col-form-label">Publication Date</label>
                         <div class="col-sm-8">
-                            <input type="date" class="form-control" id="publication_date" name="publication_date" required>
+                            <input type="date" class="form-control" id="publication_date" name="publication_date" max="9999-12-31" required>
                         </div>
                     </div>
                 </div>
