@@ -27,31 +27,30 @@
             <div class="mb-3 mt-3 row">
                 <label for="title" class="col-sm-4 col-form-label">Title</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="title" name="title" required>
+                    <input type="text" class="form-control" id="title" name="title" required value="{{ $book->title }}">
                 </div>
             </div>
             <div class="mb-3 mt-3 row">
                 <label for="author" class="col-sm-4 col-form-label">Author</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="author" name="author" required>
+                    <input type="text" class="form-control" id="author" name="author" required value="{{ $book->author }}">
                 </div>
             </div>
             <div class="mb-3 mt-3 row">
                 <label for="publication-company" class="col-sm-4 col-form-label">Publication Co.</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="publication_company" name="publication_company" required>
+                    <input type="text" class="form-control" id="publication_company" name="publication_company" required value="{{ $book->publication_company }}">
                 </div>
             </div>
             <div class="mb-3 mt-3 row">
                 <label for="publication-date" class="col-sm-4 col-form-label">Publication Date</label>
                 <div class="col-sm-8">
-                    <input type="date" class="form-control" id="publication_date" name="publication_date" max="9999-12-31" required>
+                    <input type="date" class="form-control" id="publication_date" name="publication_date" max="9999-12-31" required value="{{ $book->publication_date }}">
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Add</button>
+            <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
         </div>
     </form>
 
