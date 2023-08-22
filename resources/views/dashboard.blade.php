@@ -18,7 +18,7 @@
 
         @elseif (Session::has("success"))
             <div>
-                <div class="alert alert-success">{{ Session::get("success") }}</div>
+                <div class="alert alert-success ">{{ Session::get("success") }}</div>
             </div>
         @endif
 
@@ -50,8 +50,8 @@
                             <td>{{ $books[$i]->author }}</td>
                             <td>{{ $books[$i]->publication_company }}</td>
                             <td>{{ $books[$i]->publication_date }}</td>
-                            <td><button class="btn btn-primary">Edit</button></td>
-                            <td><button class="btn btn-primary">Delete</button></td>
+                            <td><a href="{{ route("bookedit", $books[$i]->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                            <td><button class="btn btn-dark">Delete</button></td>
                         </tr>
                     @endfor
                 </tbody>
