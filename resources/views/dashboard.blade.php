@@ -55,36 +55,38 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3">
+                <form class="row g-3" method="POST" action="{{ route("addbook.post") }}">
+                    @csrf
                     <div class="mb-3 mt-3 row">
                         <label for="title" class="col-sm-4 col-form-label">Title</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="title">
+                            <input type="text" class="form-control" id="title" name="title" required>
                         </div>
                     </div>
                     <div class="mb-3 mt-3 row">
                         <label for="author" class="col-sm-4 col-form-label">Author</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="author">
+                            <input type="text" class="form-control" id="author" name="author" required>
                         </div>
                     </div>
                     <div class="mb-3 mt-3 row">
                         <label for="publication-company" class="col-sm-4 col-form-label">Publication Co.</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="publication-company">
+                            <input type="text" class="form-control" id="publication_company" name="publication_company" required>
                         </div>
                     </div>
                     <div class="mb-3 mt-3 row">
                         <label for="publication-date" class="col-sm-4 col-form-label">Publication Date</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="publication-date">
+                            <input type="date" class="form-control" id="publication_date" name="publication_date" required>
                         </div>
                     </div>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
         </div>
         </div>
     </div>

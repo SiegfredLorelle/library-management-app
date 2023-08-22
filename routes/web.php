@@ -25,3 +25,4 @@ Route::post('/post-registration', [AuthController::class, "postRegistration"])->
 Route::post('/post-login', [AuthController::class, "postLogin"])->name("login.post");
 Route::get('/dashboard', [AuthController::class, "dashboard"])->name("dashboard");
 Route::get('/logout', [AuthController::class, "logout"])->name("logout");
+Route::post("/post-add-book", [AuthController::class, "postAddBook"])->name("addbook.post");

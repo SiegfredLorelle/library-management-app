@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Book;
 use Session;
 
 
@@ -75,8 +76,37 @@ class AuthController extends Controller
         }
     }
 
-    public function addBook() {
+    // public function bookAdd() 
+    // {
         
+    // }
+
+    public function postAddBook(Request $request)
+    {
+        $request->post('my_param');
+        $book = new Book;
+        // echo $request->title;
+        // echo $request->author;
+        // echo $request->name;
+        // echo $request->publication_company;
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->publication_company = $request->publication_company;
+        $book->publication_date = $request->publication_date;
+
+        $book->save();
+        return redirect("dashboard" )->withSuccess("Added");
+
+        // return Book::create([
+        //     "name" => $data["name"],
+        //     "email" => $data["email"],
+        //     "password" => $data["password"],
+        // ]);
+
+        // 'title',
+        // 'author',
+        // 'publication_company',
+        // 'publication_date',
     }
 
 }
