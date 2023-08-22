@@ -67,11 +67,16 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()) {
-            return view("dashboard");
+            $abc = "ASDSADD";
+            return view("dashboard", ["abc" => $abc]);
         }
         else {
             return redirect("login")->withSuccess("Login to access the dashboard page.");
         }
+    }
+
+    public function addBook() {
+        
     }
 
 }
