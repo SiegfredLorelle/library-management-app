@@ -52,26 +52,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for ($i = 0; $i < count($books); $i++)
+                    @foreach ($books as $i => $book)
                         <tr>
                             <td>{{ $i + 1 }}</td>
-                            <td>{{ $books[$i]->title }}</td>
-                            <td>{{ $books[$i]->author }}</td>
-                            <td>{{ $books[$i]->publication_company }}</td>
-                            <td>{{ $books[$i]->publication_date }}</td>
+                            <td>{{ $book->title }}</td>
+                            <td>{{ $book->author }}</td>
+                            <td>{{ $book->publication_company }}</td>
+                            <td>{{ $book->publication_date }}</td>
 
                             @if (auth()->user()->user_level == "lvl-3")
                             @elseif (auth()->user()->user_level == "lvl-2")
-                                <td><a href="{{ route("bookedit", $books[$i]->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                                <td><a href="{{ route("bookedit", $book->id) }}"><button class="btn btn-dark">Edit</button></a></td>
                             @else
-                                <td><a href="{{ route("bookedit", $books[$i]->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                                <td><a href="{{ route("bookedit", $book->id) }}"><button class="btn btn-dark">Edit</button></a></td>
                                 <td>
-                                    <form method="POST" action="{{ route("deletebook", $books[$i]->id) }}">
+                                    <form method="POST" action="{{ route("deletebook", $book->id) }}">
                                         @method("delete")
                                         @csrf
-                                        <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#deleteModal" value="{{ $books[$i]->title }}" data-value="{{ $books[$i]->id }}">Delete</button>
                                         
-                                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#modalid{{ $book->id }}">Delete</button>
+                                        <div class="modal fade" id="modalid{{ $book->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -79,7 +79,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body delete-warning-modal">
-                                                    Are you sure you want to delete "{{ $books[$i]->title }}" by {{ $books[$i]->author }}?
+                                                    Are you sure you want to delete? {{ $book->title }}, {{ $book->id }}
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
@@ -93,7 +93,7 @@
                             @endif
 
                         </tr>
-                    @endfor
+                    @endforeach
                 </tbody>
             </table>
 
