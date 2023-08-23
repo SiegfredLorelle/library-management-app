@@ -124,4 +124,11 @@ class AuthController extends Controller
         $book->save();
         return redirect("dashboard")->withSuccess("Book edited!");
     }
+
+    public function deleteBook($id) {
+        $book = Book::findOrFail($id);
+        $book->delete();
+        // return redirect("dashboard")->withSuccess("Book edited!");
+        return redirect("dashboard")->withSuccess("Book deleted!");
+    }
 }

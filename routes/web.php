@@ -28,3 +28,4 @@ Route::get('/logout', [AuthController::class, "logout"])->name("logout");
 Route::post("/post-add-book", [AuthController::class, "postAddBook"])->name("addbook.post");
 Route::get("/edit-book/{id}", [AuthController::class, "editBook"])->name("bookedit");
 Route::post("/post-edit-book/{id}", [AuthController::class, "postEditBook"])->name("editbook.post");
+Route::delete("/delete-book/{id}", [AuthController::class, "deleteBook"])->name("deletebook");

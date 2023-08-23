@@ -51,7 +51,15 @@
                             <td>{{ $books[$i]->publication_company }}</td>
                             <td>{{ $books[$i]->publication_date }}</td>
                             <td><a href="{{ route("bookedit", $books[$i]->id) }}"><button class="btn btn-dark">Edit</button></a></td>
-                            <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button></td>
+                            <td>
+                                <form method="POST" action="{{ route("deletebook", $books[$i]->id) }}" onclick="deleteConfirm(event)">
+                                    @method("delete")
+                                    @csrf
+                                    <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#deleteModal" value="{{ $books[$i]->title }}" data-value="{{ $books[$i]->id }}">Delete</button>
+                                </form>
+                        </td>
+
+
                         </tr>
                     @endfor
                 </tbody>
@@ -111,26 +119,45 @@
 
     {{-- Modal warning before deleting book --}}
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
-        Launch demo modal
-    </button>
+
     
     <!-- Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body delete-warning-modal">
                 Are you sure you want to delete?
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
             </div>
         </div>
         </div>
-    </div>
+    </div> --}}
+
+    <script>
+        // warningBtns = document.querySelectorAll(".delete-warning-btn");
+        // warningModal = document.querySelector(".delete-warning-modal");
+
+        // warningBtns.forEach(btn => {
+        //     btn.addEventListener("click", () => {
+        //         warningModal.innerHTML = `Are you sure you want to delete ${btn.value} ${btn.getAttribute("data-value")}`;
+                
+        //     });
+        // });
+
+        window.deleteConfirm = (e) => {
+            e.preventDefault();
+            const form = e.target.form;
+            if (window.confirm(`Do you want to delete ${e.target.value}?`)) {
+                form.submit();
+            }
+        }
+
+    </script>
 @endsection
