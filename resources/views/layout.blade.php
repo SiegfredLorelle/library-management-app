@@ -70,17 +70,17 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url("/dashboard") }}">Home</a>
+                      <a class="nav-link active" aria-current="page" href="{{ url("/dashboard") }}">Home</a>
                     </li>
+                    @if (auth()->user() != null && auth()->user()->user_level == "lvl-0")
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url("/logout") }}">Logout</a>
+                      <a class="nav-link" href="{{ url("/admin") }}">Admin</a>
                     </li>
-                    @endguest
-                  @if (true)
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url("/admin") }}">Admin</a>
+                      <a class="nav-link" href="{{ url("/logout") }}">Logout</a>
                     </li>
-                @endif
+                @endguest
               </ul>
             </div>
           </div>
