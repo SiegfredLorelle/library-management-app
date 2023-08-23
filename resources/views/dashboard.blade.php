@@ -79,7 +79,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body delete-warning-modal">
-                                                    Are you sure you want to delete? {{ $book->title }}, {{ $book->id }}
+                                                    Are you sure you want to delete "{{ $book->title }}" by {{ $book->author }}?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>

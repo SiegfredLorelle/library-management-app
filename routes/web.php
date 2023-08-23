@@ -32,3 +32,4 @@ Route::delete("/delete-book/{id}", [AuthController::class, "deleteBook"])->name(
 Route::get("/admin", [AuthController::class, "admin"])->name("admin");
 Route::get("/edit-user/{id}", [AuthController::class, "editUser"])->name("edituser");
 Route::post("/post-edit-user/{id}", [AuthController::class, "postEditUser"])->name("edituser.post");
+Route::delete("/delete-user/{id}", [AuthController::class, "deleteUser"])->name("deleteuser");

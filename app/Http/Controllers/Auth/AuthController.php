@@ -165,4 +165,11 @@ class AuthController extends Controller
         // $user = User::findOrFail($id);
         // return view("auth.edit_users", ["user"=>$user]);
     }
+
+    public function deleteUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect("admin")->withSuccess("User deleted!");
+    }
 }
