@@ -11,8 +11,15 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">User Level</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    @if (auth()->user() != null)
+                        @if (auth()->user()->user_level == "lvl-3")
+                        @elseif (auth()->user()->user_level == "lvl-2")
+                            <th scope="col"></th>
+                        @else
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        @endif
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -22,7 +29,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->user_level }}</td>
-                        <td scope="col"><button type="submit" class="btn btn-dark">Edit</button></td>
+                        <td><a href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
                         <td scope="col"><button type="submit" class="btn btn-danger">Delete</button></td>
                     </tr>
                 @endforeach

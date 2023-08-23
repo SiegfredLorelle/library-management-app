@@ -125,7 +125,8 @@ class AuthController extends Controller
         return redirect("dashboard")->withSuccess("Book edited!");
     }
 
-    public function deleteBook($id) {
+    public function deleteBook($id) 
+    {
         $book = Book::findOrFail($id);
         $book->delete();
         // return redirect("dashboard")->withSuccess("Book edited!");
@@ -133,10 +134,17 @@ class AuthController extends Controller
     }
 
 
-    public function admin() {
+    public function admin() 
+    {
         $users = User::orderby("id")->get();
         // $books = Book::orderby("title")->get();
         // return view("dashboard", ["books" => $books]);
         return view("auth.admin", ["users" => $users]);
+    }
+
+    public function editUser(int $id)
+    {
+        $user = User::findOrFail($id);
+        return view("auth.edit_users", ["user"=>$user]);
     }
 }

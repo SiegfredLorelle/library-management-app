@@ -38,8 +38,15 @@
                         <th scope="col">Author</th>
                         <th scope="col">Publication Company</th>
                         <th scope="col">Publication Date</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                        @if (auth()->user() != null)
+                            @if (auth()->user()->user_level == "lvl-3")
+                            @elseif (auth()->user()->user_level == "lvl-2")
+                                <th scope="col"></th>
+                            @else
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            @endif
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -50,33 +57,39 @@
                             <td>{{ $books[$i]->author }}</td>
                             <td>{{ $books[$i]->publication_company }}</td>
                             <td>{{ $books[$i]->publication_date }}</td>
-                            <td><a href="{{ route("bookedit", $books[$i]->id) }}"><button class="btn btn-dark">Edit</button></a></td>
-                            <td>
-                                <form method="POST" action="{{ route("deletebook", $books[$i]->id) }}">
-                                    @method("delete")
-                                    @csrf
-                                    <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#deleteModal" value="{{ $books[$i]->title }}" data-value="{{ $books[$i]->id }}">Delete</button>
-                                    
-                                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                            @if (auth()->user()->user_level == "lvl-3")
+                            @elseif (auth()->user()->user_level == "lvl-2")
+                                <td><a href="{{ route("bookedit", $books[$i]->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                            @else
+                                <td><a href="{{ route("bookedit", $books[$i]->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                                <td>
+                                    <form method="POST" action="{{ route("deletebook", $books[$i]->id) }}">
+                                        @method("delete")
+                                        @csrf
+                                        <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#deleteModal" value="{{ $books[$i]->title }}" data-value="{{ $books[$i]->id }}">Delete</button>
+                                        
+                                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body delete-warning-modal">
+                                                    Are you sure you want to delete "{{ $books[$i]->title }}" by {{ $books[$i]->author }}?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </div>
                                             </div>
-                                            <div class="modal-body delete-warning-modal">
-                                                Are you sure you want to delete "{{ $books[$i]->title }}" by {{ $books[$i]->author }}?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
-                                                <button type="submit" class="btn btn-danger">Delete</button>
                                             </div>
                                         </div>
-                                        </div>
-                                    </div>
-                                
-                                </form>
-                        </td>
+                                    </form>
+                                </td>
+                            @endif
+
                         </tr>
                     @endfor
                 </tbody>

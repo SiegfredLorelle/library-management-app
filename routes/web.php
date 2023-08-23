@@ -30,3 +30,4 @@ Route::get("/edit-book/{id}", [AuthController::class, "editBook"])->name("booked
 Route::post("/post-edit-book/{id}", [AuthController::class, "postEditBook"])->name("editbook.post");
 Route::delete("/delete-book/{id}", [AuthController::class, "deleteBook"])->name("deletebook");
 Route::get("/admin", [AuthController::class, "admin"])->name("admin");
+Route::get("/edit-user/{id}", [AuthController::class, "editUser"])->name("edituser");
