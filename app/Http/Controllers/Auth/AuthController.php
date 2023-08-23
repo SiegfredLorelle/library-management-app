@@ -131,4 +131,12 @@ class AuthController extends Controller
         // return redirect("dashboard")->withSuccess("Book edited!");
         return redirect("dashboard")->withSuccess("Book deleted!");
     }
+
+
+    public function admin() {
+        $users = User::orderby("id")->get();
+        // $books = Book::orderby("title")->get();
+        // return view("dashboard", ["books" => $books]);
+        return view("auth.admin", ["users" => $users]);
+    }
 }

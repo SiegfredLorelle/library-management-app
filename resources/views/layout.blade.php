@@ -75,7 +75,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url("/logout") }}">Logout</a>
                     </li>
-                @endguest
+                    @endguest
+                  @if (true)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url("/admin") }}">Admin</a>
+                    </li>
+                @endif
               </ul>
             </div>
           </div>
