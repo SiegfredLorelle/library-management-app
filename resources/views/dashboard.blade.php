@@ -24,11 +24,13 @@
 
 
             <!-- Button trigger modal -->
-        <div class="align-self-end">
-            <button type="button" class="btn btn-dark w-auto m-2 me-0 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            + Add Books
-            </button>
-        </div>
+        @if (auth()->user()->user_level == "lvl-1" || auth()->user()->user_level == "lvl-0")
+            <div class="align-self-end">
+                <button type="button" class="btn btn-dark w-auto m-2 me-0 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                + Add Books
+                </button>
+            </div>
+        @endif
 
             <table class="table">
                 <thead class="table-dark">
