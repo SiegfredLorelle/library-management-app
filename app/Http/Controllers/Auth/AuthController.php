@@ -136,9 +136,11 @@ class AuthController extends Controller
 
     public function admin() 
     {
+        if (Auth::check() && Auth::user()->user_level != "lvl-0") {
+            return $this->dashboard();
+        }
+
         $users = User::orderby("id")->get();
-        // $books = Book::orderby("title")->get();
-        // return view("dashboard", ["books" => $books]);
         return view("auth.admin", ["users" => $users]);
     }
 

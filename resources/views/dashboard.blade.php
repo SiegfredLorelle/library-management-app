@@ -1,8 +1,8 @@
 @extends("layout")
 @section("content")
     <div class="container-fluid min-vh-100 d-flex flex-column justify-content-center">
-        <h1 class="text-center">Dashboard Here</h1>
-        <h2 class="text-center">"{{ auth()->user()->name }}" is logged in</h2>
+        <h1 class="text-center">Books</h1>
+        <h2 class="text-center">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</h2>
         {{-- <p class="text-center red">{{ $abc }}</p> --}}
         <br><br>
         {{-- <button><p class="text-end"> + Add Books</p> --}}

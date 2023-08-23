@@ -1,8 +1,8 @@
 @extends("layout")
 @section("content")
     <div class="container-fluid min-vh-100 d-flex flex-column justify-content-center">
-        <h1 class="text-center">Admin Page</h1>
-        <h2 class="text-center">"{{ auth()->user()->name }}" is logged in</h2>
+        <h1 class="text-center">Admin Panel</h1>
+        <h2 class="text-center">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</h2>
         <br><br>
         <table class="table">
             <thead class="table-dark">
