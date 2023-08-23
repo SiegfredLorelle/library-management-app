@@ -72,7 +72,7 @@ class AuthController extends Controller
             return view("dashboard", ["books" => $books]);
         }
         else {
-            return redirect("login")->withSuccess("Login to access the dashboard page.");
+            return redirect("login")->withErrors("Login to access the dashboard page.");
         }
     }
 
@@ -135,8 +135,12 @@ class AuthController extends Controller
 
 
     public function admin() 
-    {
-        if (Auth::check() && Auth::user()->user_level != "lvl-0") {
+    {   
+        if (!Auth::check()) {
+            // return $this->login();
+            return redirect("login")->withErrors("Login to access dashboard.");
+        }
+        if (Auth::user()->user_level != "lvl-0") {
             return $this->dashboard();
         }
 
