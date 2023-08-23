@@ -147,4 +147,22 @@ class AuthController extends Controller
         $user = User::findOrFail($id);
         return view("auth.edit_users", ["user"=>$user]);
     }
+
+    public function postEditUser(Request $request, int $id)
+    {
+        $request->validate([
+            "name" => "required",
+            "user_level" => "required|starts_with:lvl-|ends_with:1,2,3|size:5",
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->user_level = $request->user_level;
+
+        $user->save();
+        return redirect("admin")->withSuccess("User edited!");
+
+        // $user = User::findOrFail($id);
+        // return view("auth.edit_users", ["user"=>$user]);
+    }
 }
