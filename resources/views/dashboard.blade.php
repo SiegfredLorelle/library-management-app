@@ -51,7 +51,7 @@
                             <td>{{ $books[$i]->publication_company }}</td>
                             <td>{{ $books[$i]->publication_date }}</td>
                             <td><a href="{{ route("bookedit", $books[$i]->id) }}"><button class="btn btn-dark">Edit</button></a></td>
-                            <td><button class="btn btn-dark">Delete</button></td>
+                            <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button></td>
                         </tr>
                     @endfor
                 </tbody>
@@ -63,7 +63,7 @@
 
 
 
-    <!-- Modal -->
+    <!-- Modal for adding book -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -104,6 +104,32 @@
                     <button type="submit" class="btn btn-primary">Add</button>
                 </div>
             </form>
+        </div>
+        </div>
+    </div>
+
+
+    {{-- Modal warning before deleting book --}}
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
+        Launch demo modal
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete?
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+            </div>
         </div>
         </div>
     </div>

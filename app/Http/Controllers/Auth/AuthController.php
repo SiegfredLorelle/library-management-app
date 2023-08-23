@@ -111,7 +111,7 @@ class AuthController extends Controller
     {
         $request->validate([
             "title" => "required",
-            "author" => "required",
+            "author" => "required", 
             "publication_company" => "required",
             'publication_date' => 'required|before:tomorrow'
         ]);
