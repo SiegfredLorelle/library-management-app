@@ -22,7 +22,7 @@
             </div>
         @endif
 
-        <form class="row g-3 w-50 mx-auto" method="POST" action="{{ route("addbook.post") }}">
+        <form class="row g-3 w-50 mx-auto" method="POST" action="{{ route("editbook.post", $book->id) }}">
             @csrf
             <div class="mb-3 mt-3 row">
                 <label for="title" class="col-sm-4 col-form-label">Title</label>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-dark">Edit</button>
             </div>
         </div>
     </form>

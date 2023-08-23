@@ -99,11 +99,29 @@ class AuthController extends Controller
         $book->save();
         return redirect("dashboard")->withSuccess("Book added!");
     }
-
-
+    
+    
     public function editBook(int $id)
     {
         $book = Book::findOrFail($id);
         return view("book.edit", ["book"=>$book]);
+    }
+    
+    public function postEditBook(Request $request, int $id)
+    {
+        $request->validate([
+            "title" => "required",
+            "author" => "required",
+            "publication_company" => "required",
+            'publication_date' => 'required|before:tomorrow'
+        ]);
+
+        $book = Book::findOrFail($id);
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->publication_company = $request->publication_company;
+        $book->publication_date = $request->publication_date;
+        $book->save();
+        return redirect("dashboard")->withSuccess("Book edited!");
     }
 }
