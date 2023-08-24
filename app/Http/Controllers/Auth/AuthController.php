@@ -60,7 +60,7 @@ class AuthController extends Controller
 
         $checkLoginCredentials = $request->only("email", "password");
         if (Auth::attempt($checkLoginCredentials)) {
-            return redirect("dashboard")->withSuccess("You are registered logged in!");
+            return redirect("dashboard")->withSuccess("Login successfully, welcome!");
         }
         return redirect("login")->withErrors("Login credentials are incorrect.");
     }
@@ -137,11 +137,10 @@ class AuthController extends Controller
     public function admin() 
     {   
         if (!Auth::check()) {
-            // return $this->login();
             return redirect("login")->withErrors("Login to access dashboard.");
         }
         if (Auth::user()->user_level != "lvl-0") {
-            return $this->dashboard();
+            return redirect("dashboard")->withErrors("No permission.");;
         }
 
         $users = User::orderby("id")->get();
