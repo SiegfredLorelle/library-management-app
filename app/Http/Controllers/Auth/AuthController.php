@@ -103,7 +103,14 @@ class AuthController extends Controller
     
     public function editBook(int $id)
     {
+        if (!Auth::check()) {
+            return redirect("login")->withErrors("Login to access dashboard.");
+        }
+        
         $book = Book::findOrFail($id);
+        if (Auth::user()->user_level == "lvl-3") {
+            return redirect("dashboard")->withErrors("No permission to edit books.");;
+        }
         return view("book.edit", ["book"=>$book]);
     }
     
