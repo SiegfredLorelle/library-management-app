@@ -25,13 +25,13 @@
         <form class="row g-3 w-50 mx-auto" method="POST" action="{{ route("edituser.post", $user->id) }}">
             @csrf
             <div class="mb-3 mt-3 row">
-                <label for="title" class="col-sm-4 col-form-label">Title</label>
+                <label for="title" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="name" name="name" required value="{{ $user->name }}">
                 </div>
             </div>
             <div class="mb-3 mt-3 row">
-                <label for="publication-company" class="col-sm-4 col-form-label">Publication Co.</label>
+                <label for="publication-company" class="col-sm-4 col-form-label">User Level</label>
                 <div class="col-sm-8">
                     <select class="form-select" aria-label="Default select example" id="user_level" name="user_level">
                         <option value="lvl-1">lvl-1 (view, add, edit, & view)</option>
