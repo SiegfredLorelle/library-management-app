@@ -39,7 +39,7 @@ class AuthController extends Controller
         ]);
         $data = $request->all();
         $createUser = $this->create($data);
-        return redirect("login")->withSuccess("You are registered successfully!");
+        return redirect("login")->withSuccess("Account registered!");
     }
 
     public function create(array $data)
@@ -60,9 +60,9 @@ class AuthController extends Controller
 
         $checkLoginCredentials = $request->only("email", "password");
         if (Auth::attempt($checkLoginCredentials)) {
-            return redirect("dashboard")->withSuccess("Login successfully, welcome!");
+            return redirect("dashboard")->withSuccess("Login successful, welcome!");
         }
-        return redirect("login")->withErrors("Login credentials are incorrect.");
+        return redirect("login")->withErrors("Incorrect login credentials.");
     }
 
     public function dashboard()

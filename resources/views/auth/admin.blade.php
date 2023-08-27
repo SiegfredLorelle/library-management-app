@@ -2,8 +2,26 @@
 @section("content")
     <div class="container-fluid min-vh-100 d-flex flex-column justify-content-center">
         <h1 class="text-center">Admin Panel</h1>
-        <h2 class="text-center">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</h2>
+        <h3 class="text-center">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</h3    >
         <br><br>
+
+        @if ($errors->any())
+            <div>
+                {{-- <li>{{ $error }}</li> --}}
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <span>{{ $error }}</span>
+                    @endforeach
+                </div>
+            </div>
+
+        @elseif (Session::has("success"))
+            <div>
+                <div class="alert alert-success ">{{ Session::get("success") }}</div>
+            </div>
+        @endif
+
+
         <table class="table">
             <thead class="table-dark">
                 <tr>

@@ -2,7 +2,7 @@
 @section("content")
     <div class="container-fluid min-vh-100 d-flex flex-column justify-content-center">
         <h1 class="text-center">Books</h1>
-        <h2 class="text-center">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</h2>
+        <h3 class="text-center">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</h3>
         {{-- <p class="text-center red">{{ $abc }}</p> --}}
         <br><br>
         {{-- <button><p class="text-end"> + Add Books</p> --}}
