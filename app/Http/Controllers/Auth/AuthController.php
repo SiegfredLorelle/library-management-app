@@ -143,7 +143,7 @@ class AuthController extends Controller
             return redirect("dashboard")->withErrors("No permission.");;
         }
 
-        $users = User::orderby("id")->get();
+        $users = User::orderby("user_level")->get();
         return view("auth.admin", ["users" => $users]);
     }
 

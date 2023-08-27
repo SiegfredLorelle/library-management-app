@@ -33,11 +33,17 @@
             <div class="mb-3 mt-3 row">
                 <label for="publication-company" class="col-sm-4 col-form-label">User Level</label>
                 <div class="col-sm-8">
-                    <select class="form-select" aria-label="Default select example" id="user_level" name="user_level">
-                        <option value="lvl-1">lvl-1 (view, add, edit, & view)</option>
-                        <option value="lvl-2">lvl-2 (view & edit)</option>
-                        <option value="lvl-3" selected>lvl-3 (view only)</option>
-                    </select>
+                    @if ($user->user_level != "lvl-0")
+                        <select class="form-select" aria-label="Default select example" id="user_level" name="user_level">
+                            <option value="lvl-1" >lvl-1 (view, add, edit, & view)</option>
+                            <option value="lvl-2">lvl-2 (view & edit)</option>
+                            <option value="lvl-3" selected>lvl-3 (view only)</option>
+                        </select>
+                    @else
+                        <select disabled class="form-select" aria-label="Default select example" id="user_level" name="user_level">
+                            <option value="lvl-0" selected>lvl-0 (admin)</option>
+                        </select>
+                    @endif ()
                 </div>
             </div>
             <div class="modal-footer">
