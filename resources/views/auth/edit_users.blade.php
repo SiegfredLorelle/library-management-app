@@ -35,9 +35,23 @@
                 <div class="col-sm-8">
                     @if ($user->user_level != "lvl-0")
                         <select class="form-select" aria-label="Default select example" id="user_level" name="user_level">
-                            <option value="lvl-1" >lvl-1 (view, add, edit, & view)</option>
-                            <option value="lvl-2">lvl-2 (view & edit)</option>
-                            <option value="lvl-3" selected>lvl-3 (view only)</option>
+                            @if ($user->user_level == "lvl-1")
+                                <option value="lvl-1" selected>lvl-1 (view, add, edit, & view)</option>
+                            @else
+                                <option value="lvl-1">lvl-1 (view, add, edit, & view)</option>
+                            @endif
+
+                            @if ($user->user_level == "lvl-2")
+                                <option value="lvl-2" selected>lvl-2 (view & edit)</option>
+                            @else
+                                <option value="lvl-2">lvl-2 (view & edit)</option>
+                            @endif
+
+                            @if ($user->user_level == "lvl-3")
+                                <option value="lvl-3" selected>lvl-3 (view only)</option>
+                            @else
+                                <option value="lvl-3">lvl-3 (view only)</option>
+                            @endif
                         </select>
                     @else
                         <select disabled class="form-select" aria-label="Default select example" id="user_level" name="user_level">
