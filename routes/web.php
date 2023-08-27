@@ -15,9 +15,11 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [AuthController::class, "dashboard"])->name("dashboard");
 
 Route::get('/login', [AuthController::class, "index"])->name("login");
 Route::get('/registration', [AuthController::class, "registration"])->name("registration");
