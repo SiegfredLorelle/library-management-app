@@ -54,10 +54,10 @@
                             @endif
                         </select>
                     @else
-                        <select disabled class="form-select" aria-label="Default select example" id="user_level" name="user_level">
+                        <select class="form-select" aria-label="Default select example" id="user_level" name="user_level">
                             <option value="lvl-0" selected>lvl-0 (admin)</option>
                         </select>
-                    @endif ()
+                    @endif
                 </div>
             </div>
             <div class="modal-footer">

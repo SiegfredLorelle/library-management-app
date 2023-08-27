@@ -174,7 +174,7 @@ class AuthController extends Controller
     {
         $request->validate([
             "name" => "required",
-            "user_level" => "required|starts_with:lvl-|ends_with:1,2,3|size:5",
+            "user_level" => "required|starts_with:lvl-|ends_with:0,1,2,3|size:5",
         ]);
 
         $user = User::findOrFail($id);
