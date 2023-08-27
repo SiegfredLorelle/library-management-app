@@ -47,8 +47,8 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->user_level }}</td>
-                        <td><a href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
                         @if ($user->user_level != "lvl-0")
+                            <td><a href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
                             <td>
                                 <form method="POST" action="{{ route("deleteuser", $user->id) }}">
                                     @method("delete")
@@ -56,26 +56,30 @@
                                     <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#modalid{{ $user->id }}">Delete</button>
                                     <div class="modal fade" id="modalid{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body delete-warning-modal">
+                                                    Are you sure you want to delete user: {{ $user->name }} (id: {{ $user->id }})? 
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </div>
                                             </div>
-                                            <div class="modal-body delete-warning-modal">
-                                                Are you sure you want to delete user: {{ $user->name }} (id: {{ $user->id }})? 
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </div>
-                                        </div>
                                         </div>
                                     </div>
                                 </form>
                             </td>
+                        @elseif ($user == auth()->user())
+                        <td><a href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                            <td><a class="invisible" href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
                         @else
                             <td><a class="invisible" href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
-                        @endif
+                            <td><a class="invisible" href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                    @endif
                     </tr>
                 @endforeach
             </tbody>
