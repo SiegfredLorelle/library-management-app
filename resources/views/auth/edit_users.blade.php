@@ -40,9 +40,9 @@
                     @if ($user->user_level != "lvl-0")
                         <select class="form-select" aria-label="Default select example" id="user_level" name="user_level">
                             @if ($user->user_level == "lvl-1")
-                                <option value="lvl-1" selected>lvl-1 (view, add, edit, & view)</option>
+                                <option value="lvl-1" selected>lvl-1 (view, add, edit, & delete)</option>
                             @else
-                                <option value="lvl-1">lvl-1 (view, add, edit, & view)</option>
+                                <option value="lvl-1">lvl-1 (view, add, edit, & delete)</option>
                             @endif
 
                             @if ($user->user_level == "lvl-2")
