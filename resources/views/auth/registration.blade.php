@@ -22,7 +22,20 @@
                         </div>
     
                         <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">to create an account</h5>
-    
+                        @if (Session::has("success"))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ Session::get("success") }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @elseif($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @foreach ($errors->all() as $error)
+                                <span>{{ $error }}</span><br>
+                            @endforeach
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
                         <div class="form-outline mb-4">
                         <input type="text" id="form2Example17" class="form-control form-control-lg" name="name" />
                         <label class="form-label" for="form2Example17">Name</label>
