@@ -222,3 +222,5 @@ class AuthController extends Controller
 // fix highlight in nav
 // check if editing books/user changed smth
 // move alerts (success/error msg) on top below header
+// Add back btn in edit pgs?
+// Convert icon into favicon.ico file

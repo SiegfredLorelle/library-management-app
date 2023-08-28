@@ -1,10 +1,13 @@
 @extends("layout")
 @section("content")
-    <div class="container-fluid min-vh-100 d-flex flex-column justify-content-center">
-        <h1 class="text-center">Books</h1>
-        <h3 class="text-center">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</h3>
-        {{-- <p class="text-center red">{{ $abc }}</p> --}}
-        <br><br>
+    <div class="container-fluid bg-dark">
+        <div class="py-5 text-white">
+            <h1 class="text-center">Books</h1>
+            <p class="text-center fs-4">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</p>
+        </div>
+    </div>
+    {{-- <br><br> --}}
+    <div class="container-fluid d-flex flex-column my-3">
         {{-- <button><p class="text-end"> + Add Books</p> --}}
         @if ($errors->any())
             <div>
