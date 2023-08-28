@@ -9,16 +9,20 @@
         @if ($errors->any())
             <div>
                 {{-- <li>{{ $error }}</li> --}}
-                <div class="alert alert-danger">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     @foreach ($errors->all() as $error)
                         <span>{{ $error }}</span>
                     @endforeach
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>
 
         @elseif (Session::has("success"))
             <div>
-                <div class="alert alert-success ">{{ Session::get("success") }}</div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ Session::get("success") }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </div>
         @endif
 
