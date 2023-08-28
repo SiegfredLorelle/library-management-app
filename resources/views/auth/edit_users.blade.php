@@ -6,28 +6,28 @@
         {{-- <p class="text-center red">{{ $abc }}</p> --}}
         <br><br>
         {{-- <button><p class="text-end"> + Add edituser</p> --}}
-        @if ($errors->any())
-            <div>
-                {{-- <li>{{ $error }}</li> --}}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    @foreach ($errors->all() as $error)
-                        <span>{{ $error }}</span>
-                    @endforeach
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
-
-        @elseif (Session::has("success"))
-            <div>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ Session::get("success") }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
-        @endif
-
-        <form class="row g-3 w-50 mx-auto" method="POST" action="{{ route("edituser.post", $user->id) }}">
-            @csrf
+            
+            <form class="row g-3 w-50 mx-auto" method="POST" action="{{ route("edituser.post", $user->id) }}">
+                @csrf
+                @if ($errors->any())
+                    <div>
+                        {{-- <li>{{ $error }}</li> --}}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @foreach ($errors->all() as $error)
+                                <span>{{ $error }}</span>
+                            @endforeach
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+        
+                @elseif (Session::has("success"))
+                    <div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ Session::get("success") }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                @endif
             <div class="mb-3 mt-3 row">
                 <label for="title" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
