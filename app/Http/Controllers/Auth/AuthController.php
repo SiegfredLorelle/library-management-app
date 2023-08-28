@@ -185,6 +185,11 @@ class AuthController extends Controller
         ]);
 
         $user = User::findOrFail($id);
+        
+        if ($user->user_level == "lvl-0" && $request->user_level != "lvl-0") {
+            return redirect("/edit-user/$id")->withErrors("No permission to edit admins' user levels.");
+        }
+
         $user->name = $request->name;
         $user->user_level = $request->user_level;
 
