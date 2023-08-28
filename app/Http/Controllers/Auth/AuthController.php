@@ -202,3 +202,12 @@ class AuthController extends Controller
         return redirect("admin")->withSuccess("User deleted!");
     }
 }
+
+
+// TODO:
+// style table (center elements, add icons to edit n delete btn)
+// turn edit form into modal
+// add duck icon in header
+// fix highlight in nav
+// check if editing books/user changed smth
+// fix typo in lvl-3 admin select
