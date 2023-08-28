@@ -1,9 +1,9 @@
 @extends("layout")
 @section("content")
-    <div class="container-fluid bg-dark  mb-5">
-        <hgroup class="py-5 text-white">
-            <h1 class="text-center">Books</h1>
-            <p class="text-center fs-4">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</p>
+    <div class="container-fluid bg-dark">
+        <hgroup class="py-5 text-white text-center">
+            <h1>Books</h1>
+            <p class="fs-4">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</p>
         </hgroup>
     </div>
     {{-- <br><br> --}}
@@ -26,7 +26,7 @@
             </div>
         </div>
     @endif
-    <div class="container-fluid d-flex flex-column">
+    <div class="container-fluid d-flex flex-column mt-5">
         {{-- <button><p class="text-end"> + Add Books</p> --}}
 
 
