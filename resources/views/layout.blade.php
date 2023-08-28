@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/logo.png">
+    <link rel="icon" href="/images/logo.png">
     <title>Duck Library App</title>
 
     <!-- Import Bootstrap -->
@@ -42,15 +42,20 @@
         </div>
         </div>
     </header> --}}
-
+  {{-- <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      Bootstrap
+    </a>
+  </div> --}}
 
 
     <nav class="navbar navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{{ url("/dashboard") }}">Duck Library App</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url("/dashboard") }}"><img src="/images/logo.png" width="30" height="24" class="d-inline-block align-text-top" alt="Duck Library App Logo"> Duck Library App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
           <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Duck Library App</h5>
