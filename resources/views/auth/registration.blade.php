@@ -66,7 +66,7 @@
     
                         {{-- <a class="small text-muted" href="#!">Forgot password?</a> --}}
                         <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have an account? <a href="{{ url("/login") }}"
-                            style="color: #393f81;">Login here</a></p>
+                            style="color: #393f81;">Log In Here</a></p>
 
                     </form>
     

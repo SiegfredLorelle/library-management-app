@@ -56,7 +56,7 @@
                     </div>
 
                     <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="{{ url("/registration") }}"
-                        style="color: #393f81;">Register here</a></p>
+                        style="color: #393f81;">Sign Up Here</a></p>
 
                 </form>
 
