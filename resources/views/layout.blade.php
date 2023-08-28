@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/rubber-duck-icon.png">
+    <link rel="icon" href="images/logo.png">
     <title>Duck Library App</title>
 
     <!-- Import Bootstrap -->
