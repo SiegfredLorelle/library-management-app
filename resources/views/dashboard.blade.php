@@ -39,8 +39,8 @@
             </div>
         @endif
 
-            <table class="table">
-                <thead class="table-dark">
+            <table class="table table-hover">
+                <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
@@ -58,7 +58,7 @@
                         @endif
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
                     @foreach ($books as $i => $book)
                         <tr>
                             <td>{{ $i + 1 }}</td>

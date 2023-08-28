@@ -217,7 +217,6 @@ class AuthController extends Controller
 
 
 // TODO:
-// style header for admin pg (copy dashboard pg)
 // style table (center elements, add icons to edit n delete btn)
 // turn edit form into modal
 // fix highlight in nav
