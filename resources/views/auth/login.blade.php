@@ -6,10 +6,10 @@
         <div class="col col-xl-10">
         <div class="card" style="border-radius: 1rem;">
             <div class="row g-0">
-            <div class="col-md-6 col-lg-5 d-none d-md-block">
-                <img src="https://i.pinimg.com/originals/20/29/49/202949ec444be22f71f1d8ee823a833f.png"
-                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
-            </div>
+                <div class="col-md-6 col-lg-5 d-none d-md-block">
+                    <img src="./images/duck.png"
+                    alt="Cute Duck Facing Left" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
                 <form method="POST" action="{{ route("login.post") }}">
