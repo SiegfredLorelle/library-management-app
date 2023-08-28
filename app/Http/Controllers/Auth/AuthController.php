@@ -186,14 +186,21 @@ class AuthController extends Controller
 
         $user = User::findOrFail($id);
         
+        // Ensure that admins' user level wasn't changed
         if ($user->user_level == "lvl-0" && $request->user_level != "lvl-0") {
             return redirect("/edit-user/$id")->withErrors("No permission to edit admins' user levels.");
         }
+        
+        // Ensure that user level aren't edited into admin
+        if ($user->user_level != "lvl-0" && $request->user_level == "lvl-0") {
+            return redirect("/edit-user/$id")->withErrors("No permission to edit users into admin.");
+        }
 
+        // Update database
         $user->name = $request->name;
         $user->user_level = $request->user_level;
-
         $user->save();
+
         return redirect("admin")->withSuccess("User edited!");
 
         // $user = User::findOrFail($id);
