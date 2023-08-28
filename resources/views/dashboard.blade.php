@@ -1,33 +1,33 @@
 @extends("layout")
 @section("content")
-    <div class="container-fluid bg-dark">
-        <div class="py-5 text-white">
+    <div class="container-fluid bg-dark  mb-5">
+        <hgroup class="py-5 text-white">
             <h1 class="text-center">Books</h1>
             <p class="text-center fs-4">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</p>
-        </div>
+        </hgroup>
     </div>
     {{-- <br><br> --}}
-    <div class="container-fluid d-flex flex-column my-3">
-        {{-- <button><p class="text-end"> + Add Books</p> --}}
-        @if ($errors->any())
-            <div>
-                {{-- <li>{{ $error }}</li> --}}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    @foreach ($errors->all() as $error)
-                        <span>{{ $error }}</span>
-                    @endforeach
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+    @if ($errors->any())
+        <div>
+            {{-- <li>{{ $error }}</li> --}}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @foreach ($errors->all() as $error)
+                    <span>{{ $error }}</span>
+                @endforeach
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+        </div>
 
-        @elseif (Session::has("success"))
-            <div>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ Session::get("success") }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+    @elseif (Session::has("success"))
+        <div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ Session::get("success") }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        @endif
+        </div>
+    @endif
+    <div class="container-fluid d-flex flex-column">
+        {{-- <button><p class="text-end"> + Add Books</p> --}}
 
 
             <!-- Button trigger modal -->
@@ -106,10 +106,9 @@
 
             {{-- TODO: Modal for edit --}}
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Launch static backdrop modal
-            </button>
-            
+            </button> --}}
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -128,6 +127,7 @@
                 </div>
                 </div>
             </div>
+    </div>
 
 
 
@@ -180,32 +180,4 @@
         </div>
     </div>
 
-
-    {{-- Modal warning before deleting book --}}
-    <!-- Button trigger modal -->
-
-    
-    <!-- Modal -->
-
-
-    <script>
-        // warningBtns = document.querySelectorAll(".delete-warning-btn");
-        // warningModal = document.querySelector(".delete-warning-modal");
-
-        // warningBtns.forEach(btn => {
-        //     btn.addEventListener("click", () => {
-        //         warningModal.innerHTML = `Are you sure you want to delete ${btn.value} ${btn.getAttribute("data-value")}`;
-                
-        //     });
-        // });
-
-        // window.deleteConfirm = (e) => {
-        //     e.preventDefault();
-        //     const form = e.target.form;
-        //     if (window.confirm(`Do you want to delete ${e.target.value}?`)) {
-        //         form.submit();
-        //     }
-        // }
-
-    </script>
 @endsection

@@ -1,31 +1,33 @@
 @extends("layout")
 @section("content")
-    <div class="container-fluid min-vh-100 d-flex flex-column justify-content-center">
-        <h1 class="text-center">Admin Panel</h1>
-        <h3 class="text-center">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</h3    >
-        <br><br>
-
-        @if ($errors->any())
-            <div>
-                {{-- <li>{{ $error }}</li> --}}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    @foreach ($errors->all() as $error)
-                        <span>{{ $error }}</span>
-                    @endforeach
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+    <div class="container-fluid bg-dark mb-5">
+        <hgroup class="py-5 text-white">
+            <h1 class="text-center">Admin Panel</h1>
+            <p class="text-center fs-4">"{{ auth()->user()->name }}" is logged in ({{ auth()->user()->user_level }})</p>
+        </hgroup>
+    </div>
+    
+    @if ($errors->any())
+        <div>
+            {{-- <li>{{ $error }}</li> --}}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @foreach ($errors->all() as $error)
+                    <span>{{ $error }}</span>
+                @endforeach
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+        </div>
 
-        @elseif (Session::has("success"))
-            <div>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ Session::get("success") }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+    @elseif (Session::has("success"))
+        <div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ Session::get("success") }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        @endif
+        </div>
+    @endif
 
-
+    <div class="container-fluid d-flex flex-column">
         <table class="table">
             <thead class="table-dark">
                 <tr>
