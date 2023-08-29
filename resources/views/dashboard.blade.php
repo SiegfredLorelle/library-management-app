@@ -71,14 +71,62 @@
                             @elseif (auth()->user()->user_level == "lvl-2")
                                 <td><a href="{{ route("bookedit", $book->id) }}"><button class="btn btn-dark">Edit</button></a></td>
                             @else
-                                <td><a href="{{ route("bookedit", $book->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                                <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit{{ $book->id }}">
+                                    Edit
+                                </button></td>
+                                <!-- Modal -->
+                                <div class="modal fade" id="edit{{ $book->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Book</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="row g-3" method="POST" action="{{ route("editbook.post", $book->id) }}">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="mb-3 mt-3 row">
+                                                        <label for="title" class="col-sm-4 col-form-label">Title</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="title" name="title" required value="{{ $book->title }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 mt-3 row">
+                                                        <label for="author" class="col-sm-4 col-form-label">Author</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="author" name="author" required value="{{ $book->author }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 mt-3 row">
+                                                        <label for="publication-company" class="col-sm-4 col-form-label">Publication Co.</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="publication_company" name="publication_company" required value="{{ $book->publication_company }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 mt-3 row">
+                                                        <label for="publication-date" class="col-sm-4 col-form-label">Publication Date</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="date" class="form-control" id="publication_date" name="publication_date" max="9999-12-31" required value="{{ $book->publication_date }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-warning">Edit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
                                 <td>
                                     <form method="POST" action="{{ route("deletebook", $book->id) }}">
                                         @method("delete")
                                         @csrf
                                         
-                                        <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#modalid{{ $book->id }}">Delete</button>
-                                        <div class="modal fade" id="modalid{{ $book->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#delete{{ $book->id }}">Delete</button>
+                                        <div class="modal fade" id="delete{{ $book->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -106,55 +154,7 @@
 
             {{-- TODO: Modal for edit --}}
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Edit
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Book</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="row g-3" method="POST" action="{{ route("editbook.post", $book->id) }}">
-                            @csrf
-                            <div class="modal-body">
-                                <div class="mb-3 mt-3 row">
-                                    <label for="title" class="col-sm-4 col-form-label">Title</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="title" name="title" required value="{{ $book->title }}">
-                                    </div>
-                                </div>
-                                <div class="mb-3 mt-3 row">
-                                    <label for="author" class="col-sm-4 col-form-label">Author</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="author" name="author" required value="{{ $book->author }}">
-                                    </div>
-                                </div>
-                                <div class="mb-3 mt-3 row">
-                                    <label for="publication-company" class="col-sm-4 col-form-label">Publication Co.</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="publication_company" name="publication_company" required value="{{ $book->publication_company }}">
-                                    </div>
-                                </div>
-                                <div class="mb-3 mt-3 row">
-                                    <label for="publication-date" class="col-sm-4 col-form-label">Publication Date</label>
-                                    <div class="col-sm-8">
-                                        <input type="date" class="form-control" id="publication_date" name="publication_date" max="9999-12-31" required value="{{ $book->publication_date }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-warning">Edit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                </div>
-            </div>
+
     </div>
 
 
