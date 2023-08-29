@@ -218,7 +218,6 @@ class AuthController extends Controller
 
 // TODO:
 // style table (center elements, add icons to edit n delete btn)
-// turn edit form into modal
 // fix highlight in nav
 // check if editing books/user changed smth
 // Add back btn in edit pgs?
