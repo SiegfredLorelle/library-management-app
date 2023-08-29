@@ -221,9 +221,7 @@ class AuthController extends Controller
 // turn edit form into modal
 // fix highlight in nav
 // check if editing books/user changed smth
-// move alerts (success/error msg) on top below header
 // Add back btn in edit pgs?
-// Convert icon into favicon.ico file
 // delete comments in views
 // add text when admin/book table is empty
 // disable btns for edit and delete in admin pg

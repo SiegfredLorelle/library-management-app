@@ -106,23 +106,51 @@
 
             {{-- TODO: Modal for edit --}}
             <!-- Button trigger modal -->
-            {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Launch static backdrop modal
-            </button> --}}
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Edit
+            </button>
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Book</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                        <form class="row g-3" method="POST" action="{{ route("editbook.post", $book->id) }}">
+                            @csrf
+                            <div class="modal-body">
+                                <div class="mb-3 mt-3 row">
+                                    <label for="title" class="col-sm-4 col-form-label">Title</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="title" name="title" required value="{{ $book->title }}">
+                                    </div>
+                                </div>
+                                <div class="mb-3 mt-3 row">
+                                    <label for="author" class="col-sm-4 col-form-label">Author</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="author" name="author" required value="{{ $book->author }}">
+                                    </div>
+                                </div>
+                                <div class="mb-3 mt-3 row">
+                                    <label for="publication-company" class="col-sm-4 col-form-label">Publication Co.</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="publication_company" name="publication_company" required value="{{ $book->publication_company }}">
+                                    </div>
+                                </div>
+                                <div class="mb-3 mt-3 row">
+                                    <label for="publication-date" class="col-sm-4 col-form-label">Publication Date</label>
+                                    <div class="col-sm-8">
+                                        <input type="date" class="form-control" id="publication_date" name="publication_date" max="9999-12-31" required value="{{ $book->publication_date }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-warning">Edit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 </div>
@@ -143,9 +171,9 @@
             <h5 class="modal-title" id="addBookModalLabel">Add Book</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form class="row g-3" method="POST" action="{{ route("addbook.post") }}">
-                    @csrf
+            <form class="row g-3" method="POST" action="{{ route("addbook.post") }}">
+                @csrf
+                <div class="modal-body">
                     <div class="mb-3 mt-3 row">
                         <label for="title" class="col-sm-4 col-form-label">Title</label>
                         <div class="col-sm-8">
