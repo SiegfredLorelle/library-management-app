@@ -54,7 +54,67 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->user_level }}</td>
                         @if ($user->user_level != "lvl-0")
-                            <td><a href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                        <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit{{ $user->id }}">
+                            Edit
+                        </button></td>
+                            <!-- Modal for edding books -->
+                            <div class="modal fade" id="edit{{ $user->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Book</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="row g-3" method="POST" action="{{ route("edituser.post", $user->id) }}">
+                                            @csrf
+                                            <div class="modal-body">
+                                                <div class="mb-3 mt-3 row">
+                                                    <label for="title" class="col-sm-4 col-form-label">Name</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" id="name" name="name" required value="{{ $user->name }}">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 mt-3 row">
+                                                    <label for="author" class="col-sm-4 col-form-label">User Level</label>
+                                                    <div class="col-sm-8">
+                                                        @if ($user->user_level != "lvl-0")
+                                                            <select class="form-select" aria-label="Default select example" id="user_level" name="user_level">
+                                                                @if ($user->user_level == "lvl-1")
+                                                                    <option value="lvl-1" selected>lvl-1 (view, add, edit, & delete)</option>
+                                                                @else
+                                                                    <option value="lvl-1">lvl-1 (view, add, edit, & delete)</option>
+                                                                @endif
+                                    
+                                                                @if ($user->user_level == "lvl-2")
+                                                                    <option value="lvl-2" selected>lvl-2 (view & edit)</option>
+                                                                @else
+                                                                    <option value="lvl-2">lvl-2 (view & edit)</option>
+                                                                @endif
+                                    
+                                                                @if ($user->user_level == "lvl-3")
+                                                                    <option value="lvl-3" selected>lvl-3 (view only)</option>
+                                                                @else
+                                                                    <option value="lvl-3">lvl-3 (view only)</option>
+                                                                @endif
+                                                            </select>
+                                                        @else
+                                                            <select class="form-select" aria-label="Default select example" id="user_level" name="user_level">
+                                                                <option value="lvl-0" selected>lvl-0 (admin)</option>
+                                                            </select>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-warning">Edit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                             <td>
                                 <form method="POST" action="{{ route("deleteuser", $user->id) }}">
                                     @method("delete")
@@ -80,11 +140,71 @@
                                 </form>
                             </td>
                         @elseif ($user == auth()->user())
-                        <td><a href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
-                            <td><a class="invisible" href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                        <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit{{ $user->id }}">
+                            Edit
+                        </button></td>
+                            <!-- Modal for edding books -->
+                            <div class="modal fade" id="edit{{ $user->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Book</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="row g-3" method="POST" action="{{ route("edituser.post", $user->id) }}">
+                                            @csrf
+                                            <div class="modal-body">
+                                                <div class="mb-3 mt-3 row">
+                                                    <label for="title" class="col-sm-4 col-form-label">Name</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" id="name" name="name" required value="{{ $user->name }}">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 mt-3 row">
+                                                    <label for="author" class="col-sm-4 col-form-label">User Level</label>
+                                                    <div class="col-sm-8">
+                                                        @if ($user->user_level != "lvl-0")
+                                                            <select class="form-select" aria-label="Default select example" id="user_level" name="user_level">
+                                                                @if ($user->user_level == "lvl-1")
+                                                                    <option value="lvl-1" selected>lvl-1 (view, add, edit, & delete)</option>
+                                                                @else
+                                                                    <option value="lvl-1">lvl-1 (view, add, edit, & delete)</option>
+                                                                @endif
+                                    
+                                                                @if ($user->user_level == "lvl-2")
+                                                                    <option value="lvl-2" selected>lvl-2 (view & edit)</option>
+                                                                @else
+                                                                    <option value="lvl-2">lvl-2 (view & edit)</option>
+                                                                @endif
+                                    
+                                                                @if ($user->user_level == "lvl-3")
+                                                                    <option value="lvl-3" selected>lvl-3 (view only)</option>
+                                                                @else
+                                                                    <option value="lvl-3">lvl-3 (view only)</option>
+                                                                @endif
+                                                            </select>
+                                                        @else
+                                                            <select class="form-select" aria-label="Default select example" id="user_level" name="user_level">
+                                                                <option value="lvl-0" selected>lvl-0 (admin)</option>
+                                                            </select>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-warning">Edit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <td><a class="invisible" href="#"><button class="btn btn-dark">Delete</button></a></td>
                         @else
-                            <td><a class="invisible" href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
-                            <td><a class="invisible" href="{{ route("edituser", $user->id) }}"><button class="btn btn-dark">Edit</button></a></td>
+                            <td><a class="invisible" href="#"><button class="btn btn-dark">Edit</button></a></td>
+                            <td><a class="invisible" href="#"><button class="btn btn-dark">Delete</button></a></td>
                     @endif
                     </tr>
                 @endforeach

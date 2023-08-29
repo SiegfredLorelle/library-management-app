@@ -154,28 +154,28 @@ class AuthController extends Controller
         return view("auth.admin", ["users" => $users]);
     }
     
-    public function editUser(int $id)
-    {
-        // Ensure user is logged in
-        if (!Auth::check()) {
-            return redirect("login")->withErrors("Login to access dashboard.");
-        }
+    // public function editUser(int $id)
+    // {
+    //     // Ensure user is logged in
+    //     if (!Auth::check()) {
+    //         return redirect("login")->withErrors("Login to access dashboard.");
+    //     }
 
-        $logged_user = Auth::user();
-        $user_to_edit = User::findOrFail($id);
+    //     $logged_user = Auth::user();
+    //     $user_to_edit = User::findOrFail($id);
 
-        // Ensure the user is an admin (allowed to edit users)
-        if ($logged_user->user_level != "lvl-0") {
-            return redirect("admin")->withErrors("No permission to edit users.");;
-        }
+    //     // Ensure the user is an admin (allowed to edit users)
+    //     if ($logged_user->user_level != "lvl-0") {
+    //         return redirect("admin")->withErrors("No permission to edit users.");;
+    //     }
         
-        // Ensure the user is editing non-admin users (except self, admins are allowed to edit his/her self)
-        if ($user_to_edit->user_level == "lvl-0" && $logged_user->id != $user_to_edit->id) {
-            return redirect("admin")->withErrors("No permission to edit other admins.");;
-        }
+    //     // Ensure the user is editing non-admin users (except self, admins are allowed to edit his/her self)
+    //     if ($user_to_edit->user_level == "lvl-0" && $logged_user->id != $user_to_edit->id) {
+    //         return redirect("admin")->withErrors("No permission to edit other admins.");;
+    //     }
 
-        return view("auth.edit_users", ["user"=>$user_to_edit]);
-    }
+    //     return view("auth.edit_users", ["user"=>$user_to_edit]);
+    // }
 
     public function postEditUser(Request $request, int $id)
     {
@@ -193,7 +193,7 @@ class AuthController extends Controller
         
         // Ensure that user level aren't edited into admin
         if ($user->user_level != "lvl-0" && $request->user_level == "lvl-0") {
-            return redirect("/edit-user/$id")->withErrors("No permission to edit users into admin.");
+            return redirect("/dashboard")->withErrors("No permission to edit users into admin.");
         }
 
         // Update database
