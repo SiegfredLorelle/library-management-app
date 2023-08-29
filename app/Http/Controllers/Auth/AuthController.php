@@ -226,3 +226,4 @@ class AuthController extends Controller
 // Convert icon into favicon.ico file
 // delete comments in views
 // add text when admin/book table is empty
+// disable btns for edit and delete in admin pg
