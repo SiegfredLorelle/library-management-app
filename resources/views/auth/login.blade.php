@@ -17,7 +17,7 @@
 
                     <div class="d-flex align-items-center mb-3 pb-1">
                     {{-- <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i> --}}
-                    <span class="h1 fw-bold mb-0">Login<i class="fa-solid fa-book"></i></span>
+                    <span class="h1 fw-bold mb-0">Login</span>
                     </div>
 
                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">to access dashboard</h5>
@@ -52,7 +52,8 @@
                     </div>
                     
                     <div class="pt-1 mb-4">
-                        <input type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="Login">
+                        {{-- <input type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="Login"> --}}
+                        <button type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="Login">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
                     </div>
 
                     <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="{{ url("/registration") }}"
