@@ -4,8 +4,20 @@ import laravel from 'laravel-vite-plugin';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: [
+                'resources/css/app.css', 
+                'resources/js/app.js', 
+                'resources/sass/app.scss',
+            ],
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+            // add below path of fontawesome
+            '~fontawesome': path.resolve(__dirname, 'node_modules/@fortawesome/fontawesome-free'), // <- add this line
+
+        }
+    },
 });

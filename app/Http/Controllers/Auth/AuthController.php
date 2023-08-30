@@ -224,3 +224,4 @@ class AuthController extends Controller
 // delete comments in views
 // add text when admin/book table is empty
 // disable btns for edit and delete in admin pg
+// install font awesome and bootstrap via vite (instead of importing from net)
