@@ -17,7 +17,7 @@
                         @csrf
     
                         <div class="d-flex align-items-center mb-3 pb-1">
-                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                        {{-- <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i> --}}
                         <span class="h1 fw-bold mb-0">Sign Up</span>
                         </div>
     
@@ -61,7 +61,10 @@
                         </div>
                         
                         <div class="pt-1 mb-4">
-                            <input type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="Sign Up">
+                            {{-- <input type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="Sign Up"> --}}
+                            <button type="submit" name="submit" class="btn btn-dark btn-lg btn-block">
+                                Sign Up <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            </button>
                         </div>
     
                         {{-- <a class="small text-muted" href="#!">Forgot password?</a> --}}
