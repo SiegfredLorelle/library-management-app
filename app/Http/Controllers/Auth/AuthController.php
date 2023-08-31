@@ -217,10 +217,9 @@ class AuthController extends Controller
 
 
 // TODO:
-// style table (center elements, add icons to edit n delete btn)
+// style table (center columns)
 // fix highlight in nav
 // check if editing books/user changed smth
-// Add back btn in edit pgs?
 // delete comments in views
 // add text when admin/book table is empty
 // disable btns for edit and delete in admin pg
