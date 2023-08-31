@@ -55,7 +55,7 @@
                         <td>{{ $user->user_level }}</td>
                         @if ($user->user_level != "lvl-0")
                         <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit{{ $user->id }}">
-                            Edit
+                            <i class="fa-solid fa-user-pen"></i> Edit
                         </button></td>
                             <!-- Modal for edding books -->
                             <div class="modal fade" id="edit{{ $user->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -119,8 +119,8 @@
                                 <form method="POST" action="{{ route("deleteuser", $user->id) }}">
                                     @method("delete")
                                     @csrf
-                                    <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#modalid{{ $user->id }}">Delete</button>
-                                    <div class="modal fade" id="modalid{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#delete{{ $user->id }}"><i class="fa-solid fa-user-xmark"></i> Delete</button>
+                                    <div class="modal fade" id="delete{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -141,7 +141,7 @@
                             </td>
                         @elseif ($user == auth()->user())
                         <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit{{ $user->id }}">
-                            Edit
+                            <i class="fa-solid fa-user-pen"></i> Edit
                         </button></td>
                             <!-- Modal for edding books -->
                             <div class="modal fade" id="edit{{ $user->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
