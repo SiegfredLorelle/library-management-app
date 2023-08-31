@@ -34,7 +34,7 @@
         @if (auth()->user()->user_level == "lvl-1" || auth()->user()->user_level == "lvl-0")
             <div class="align-self-end">
                 <button type="button" class="btn btn-dark w-auto m-2 me-0 " data-bs-toggle="modal" data-bs-target="#addBookModal">
-                + Add Books
+                    <i class="fa-solid fa-plus"></i> Add Book
                 </button>
             </div>
         @endif
@@ -70,7 +70,7 @@
                             @if (auth()->user()->user_level == "lvl-3")
                             @elseif (auth()->user()->user_level == "lvl-2")
                                 <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit{{ $book->id }}">
-                                    Edit
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit
                                 </button></td>
                                 <!-- Modal for edding books -->
                                 <div class="modal fade" id="edit{{ $book->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -120,9 +120,11 @@
                                 </div>
                                 <td>
                             @else
-                                <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit{{ $book->id }}">
-                                    Edit
-                                </button></td>
+                                <td>
+                                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit{{ $book->id }}">
+                                        <i class="fa-solid fa-pen-to-square"></i> Edit
+                                    </button>
+                                </td>
                                 <!-- Modal for edding books -->
                                 <div class="modal fade" id="edit{{ $book->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -174,7 +176,7 @@
                                         @method("delete")
                                         @csrf
                                         
-                                        <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#delete{{ $book->id }}">Delete</button>
+                                        <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#delete{{ $book->id }}"><i class="fa-solid fa-trash-can"></i> Delete</button>
                                         <div class="modal fade" id="delete{{ $book->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                             <div class="modal-content">
