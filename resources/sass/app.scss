@@ -1,8 +1,30 @@
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+// @import '~bootstrap';
+@import 'node_modules/bootstrap/scss/bootstrap';
 
 // for FontAwesome v6+
-$fa-font-path: '~fontawesome/webfonts';
-@import '~fontawesome/scss/fontawesome';
-@import '~fontawesome/scss/brands';
-@import '~fontawesome/scss/solid';
+// $fa-font-path: '~fontawesome/webfonts';
+// @import '~fontawesome/scss/fontawesome';
+// @import '~fontawesome/scss/brands';
+// @import '~fontawesome/scss/solid';
+
+
+// @import "node_modules/@fontawesome/font-awesome/scss/font-awesome.scss";
+// @import "node_modules/font-awesome/scss/font-awesome";
+// @import "node_modules/font-awesome/scss/brands";
+// @import "node_modules/font-awesome/scss/solid";
+// node_modules\@fortawesome
+// C:\Users\Siegfred\programs\laravel\auth-system\node_modules\font-awesome
+
+// $fa-font-path: "../webfonts";
+
+// importing core styling file
+// @import "node_modules/font-awesome/scss/fontawesome.scss";
+
+// // our project needs Solid + Brands
+// @import "node_modules/font-awesome/scss/solid.scss";
+// @import "node_modules/font-awesome/scss/brands.scss"
+
+@import "node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+// @import "node_modules/font-awesome/scss/font-awesome.scss";

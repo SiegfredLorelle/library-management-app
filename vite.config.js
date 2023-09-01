@@ -14,10 +14,9 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+            // '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
             // add below path of fontawesome
-            '~fontawesome': path.resolve(__dirname, 'node_modules/@fortawesome/fontawesome-free'), // <- add this line
-
+            // '~fontawesome': path.resolve(__dirname, 'node_modules/@fortawesome/fontawesome-free'), // <- add this line
         }
     },
 });

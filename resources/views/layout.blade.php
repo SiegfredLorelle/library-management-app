@@ -7,16 +7,16 @@
     <title>Duck Library App</title>
 
     <!-- Import Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> --}}
     
     {{-- Import Font Awesome --}}
-    <script src="https://kit.fontawesome.com/2fa58dfbff.js" crossorigin="anonymous"></script>
+    {{-- <script src="https://kit.fontawesome.com/2fa58dfbff.js" crossorigin="anonymous"></script> --}}
+    {{-- <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
     
-    @vite(["resources/css/app.css", "resources/js/app.js"])
+    @vite(["resources/css/app.css", "resources/js/app.js", "resources/sass/app.scss"])
 </head>
 
 
-{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> --}}
 <body>
 {{-- <header class="p-3 bg-dark text-white">
         <div class="container">
