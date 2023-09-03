@@ -23,6 +23,10 @@ class AuthController extends Controller
 
     public function registration() 
     {
+        if (Auth::check()) {
+            $this->logout();
+            return redirect("registration");
+        }
         return view("auth.registration");
     }
 
