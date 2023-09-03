@@ -57,12 +57,12 @@
                         <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit{{ $user->id }}">
                             <i class="fa-solid fa-user-pen"></i> Edit
                         </button></td>
-                            <!-- Modal for edding books -->
+                            <!-- Modal for editing users -->
                             <div class="modal fade" id="edit{{ $user->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Book</h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit User</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -143,12 +143,12 @@
                         <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit{{ $user->id }}">
                             <i class="fa-solid fa-user-pen"></i> Edit
                         </button></td>
-                            <!-- Modal for edding books -->
+                            <!-- Modal for editing users -->
                             <div class="modal fade" id="edit{{ $user->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Book</h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit User</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
