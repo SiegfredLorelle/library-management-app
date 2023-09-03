@@ -12,8 +12,12 @@ use Session;
 
 class AuthController extends Controller
 {
-    public function index() 
+    public function login() 
     {
+        if (Auth::check()) {
+            $this->logout();
+            return redirect("login");
+        }
         return view("auth.login");
     }
 
