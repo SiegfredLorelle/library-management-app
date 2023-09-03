@@ -16,7 +16,7 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             $this->logout();
-            return redirect("login");
+            return redirect("login")->withSuccess("User logged out.");
         }
         return view("auth.login");
     }
@@ -25,16 +25,20 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             $this->logout();
-            return redirect("registration");
+            return redirect("registration")->withSuccess("User logged out.")    ;
         }
         return view("auth.registration");
     }
 
     public function logout()
     {
+        if (!Auth::check()) {
+            return redirect("login");
+        }
+
         Session::flush();
         Auth::logout();
-        return redirect("login");
+        return redirect("login")->withSuccess("User logged out.");
     }
 
     public function postRegistration(Request $request)
@@ -230,8 +234,5 @@ class AuthController extends Controller
 // check if editing books/user changed smth
 // delete comments in views
 // add text when admin/book table is empty
-// disable btns for edit and delete in admin pg
 // install font awesome and bootstrap via vite (instead of importing from net)
 // add search functionality
-
-// Logout users when accessing login and sign up when currently authed

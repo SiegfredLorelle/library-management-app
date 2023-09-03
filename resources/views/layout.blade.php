@@ -69,9 +69,6 @@
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url("/login") }}">Home</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ url("/login") }}">Log In</a>
                     </li>
                     <li class="nav-item">
@@ -79,7 +76,7 @@
                     </li>
                 @else
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="{{ url("/dashboard") }}">Home</a>
+                      <a class="nav-link" aria-current="page" href="{{ url("/dashboard") }}">Dashboard</a>
                     </li>
                     @if (auth()->user() != null && auth()->user()->user_level == "lvl-0")
                     <li class="nav-item">
