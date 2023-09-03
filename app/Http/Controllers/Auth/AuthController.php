@@ -72,7 +72,7 @@ class AuthController extends Controller
             return view("dashboard", ["books" => $books]);
         }
         else {
-            return redirect("login")->withErrors("Login to access the dashboard page.");
+            return redirect("login")->withErrors("Login to access the dashboard.");
         }
     }
 
@@ -188,12 +188,12 @@ class AuthController extends Controller
         
         // Ensure that admins' user level wasn't changed
         if ($user->user_level == "lvl-0" && $request->user_level != "lvl-0") {
-            return redirect("/edit-user/$id")->withErrors("No permission to edit admins' user levels.");
+            return redirect("/admin")->withErrors("No permission to edit admins' user levels.");
         }
         
         // Ensure that user level aren't edited into admin
         if ($user->user_level != "lvl-0" && $request->user_level == "lvl-0") {
-            return redirect("/dashboard")->withErrors("No permission to edit users into admin.");
+            return redirect("/admin")->withErrors("No permission to edit users into admin.");
         }
 
         // Update database
@@ -225,3 +225,5 @@ class AuthController extends Controller
 // disable btns for edit and delete in admin pg
 // install font awesome and bootstrap via vite (instead of importing from net)
 // add search functionality
+
+// Logout users when accessing login and sign up when currently authed
