@@ -127,7 +127,7 @@
                                 </td>
                                 <!-- Modal for edding books -->
                                 <div class="modal fade" id="edit{{ $book->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
+                                    <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Book</h1>
@@ -178,7 +178,7 @@
                                         
                                         <button type="button" class="btn btn-dark delete-warning-btn" data-bs-toggle="modal" data-bs-target="#delete{{ $book->id }}"><i class="fa-solid fa-trash-can"></i> Delete</button>
                                         <div class="modal fade" id="delete{{ $book->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
+                                            <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Book</h1>
