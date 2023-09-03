@@ -230,9 +230,7 @@ class AuthController extends Controller
 
 // TODO:
 // style table (center columns)
-// fix highlight in nav
 // check if editing books/user changed smth
 // delete comments in views
 // add text when admin/book table is empty
-// install font awesome and bootstrap via vite (instead of importing from net)
 // add search functionality
