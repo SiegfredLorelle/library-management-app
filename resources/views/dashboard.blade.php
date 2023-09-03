@@ -74,7 +74,7 @@
                                 </button></td>
                                 <!-- Modal for edding books -->
                                 <div class="modal fade" id="edit{{ $book->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
+                                    <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Book</h1>
@@ -215,7 +215,7 @@
 
     <!-- Modal for adding book -->
     <div class="modal fade" id="addBookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
             <h5 class="modal-title" id="addBookModalLabel">Add Book</h5>
