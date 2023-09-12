@@ -75,14 +75,33 @@
                             
                             @if (auth()->user()->user_level == "lvl-3")
                                 @if ($book->inventory_count > 0)
-                                    <td scope="col"><button type="submit" class="btn btn-dark">No Stock</button></td>
+                                    <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#borrow{{ $i }}">Borrow Book</button></td>
+
                                 @else
-                                    <td scope="col"><button type="submit" class="btn btn-dark" disabled>Borrow Book</button></td>
+                                    <td scope="col"><button type="submit" class="btn btn-dark" disabled data-bs-toggle="modal" data-bs-target="#borrow{{ $i }}">Out of Stock</button></td>
                                 @endif
                     
                             @else
                                 <td>{{ $book->inventory_count }}</td>
                             @endif
+                            <!-- Modal for borrowing book -->
+                            <div class="modal fade" id="borrow{{ $i }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Borrow Book</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body delete-warning-modal">
+                                            Are you sure you want to borrow "{{ $book->title }}" by {{ $book->author }}?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-danger">Borrow</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             @if (auth()->user()->user_level == "lvl-3")
                             @elseif (auth()->user()->user_level == "lvl-2")
@@ -218,10 +237,6 @@
                     @endforeach
                 </tbody>
             </table>
-
-            {{-- TODO: Modal for edit --}}
-            <!-- Button trigger modal -->
-
     </div>
 
 
@@ -274,5 +289,52 @@
         </div>
         </div>
     </div>
+
+
+        <!-- Modal for adding book -->
+    <div class="modal fade" id="addBookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="addBookModalLabel">Add Book</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="row g-3" method="POST" action="{{ route("addbook.post") }}">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3 mt-3 row">
+                        <label for="title" class="col-sm-4 col-form-label">Title</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-3 row">
+                        <label for="author" class="col-sm-4 col-form-label">Author</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="author" name="author" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-3 row">
+                        <label for="publication-company" class="col-sm-4 col-form-label">Publication Co.</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="publication_company" name="publication_company" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-3 row">
+                        <label for="publication-date" class="col-sm-4 col-form-label">Publication Date</label>
+                        <div class="col-sm-8">
+                            <input type="date" class="form-control" id="publication_date" name="publication_date" max="9999-12-31" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-warning">Add</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+
 
 @endsection
