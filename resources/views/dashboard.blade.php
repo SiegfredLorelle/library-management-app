@@ -47,8 +47,12 @@
                         <th scope="col">Author</th>
                         <th scope="col">Publication Company</th>
                         <th scope="col">Publication Date</th>
-                        <th scope="col">Inventory Count</th>
                         @if (auth()->user() != null)
+                            @if (auth()->user()->user_level == "lvl-3")
+                                <th scope="col"></th>
+                                @else
+                                <th scope="col">Inventory Count</th>
+                            @endif
                             @if (auth()->user()->user_level == "lvl-3")
                             @elseif (auth()->user()->user_level == "lvl-2")
                                 <th scope="col"></th>
@@ -68,7 +72,17 @@
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->publication_company }}</td>
                             <td>{{ $book->publication_date }}</td>
-                            <td>{{ $book->inventory_count }}</td>
+                            
+                            @if (auth()->user()->user_level == "lvl-3")
+                                @if ($book->inventory_count > 0)
+                                    <td scope="col"><button type="submit" class="btn btn-dark">No Stock</button></td>
+                                @else
+                                    <td scope="col"><button type="submit" class="btn btn-dark" disabled>Borrow Book</button></td>
+                                @endif
+                    
+                            @else
+                                <td>{{ $book->inventory_count }}</td>
+                            @endif
 
                             @if (auth()->user()->user_level == "lvl-3")
                             @elseif (auth()->user()->user_level == "lvl-2")
