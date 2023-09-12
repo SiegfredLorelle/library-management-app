@@ -14,5 +14,6 @@ class Book extends Model
         'author',
         'publication_company',
         'publication_date',
+        'inventory_count',
     ];
 }

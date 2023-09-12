@@ -47,6 +47,7 @@
                         <th scope="col">Author</th>
                         <th scope="col">Publication Company</th>
                         <th scope="col">Publication Date</th>
+                        <th scope="col">Inventory Count</th>
                         @if (auth()->user() != null)
                             @if (auth()->user()->user_level == "lvl-3")
                             @elseif (auth()->user()->user_level == "lvl-2")
@@ -56,6 +57,7 @@
                                 <th scope="col"></th>
                             @endif
                         @endif
+
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -66,6 +68,7 @@
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->publication_company }}</td>
                             <td>{{ $book->publication_date }}</td>
+                            <td>{{ $book->inventory_count }}</td>
 
                             @if (auth()->user()->user_level == "lvl-3")
                             @elseif (auth()->user()->user_level == "lvl-2")
