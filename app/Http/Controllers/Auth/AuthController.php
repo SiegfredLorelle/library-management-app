@@ -193,7 +193,7 @@ class AuthController extends Controller
         $borrowedBook->delete();
         $book->save();
 
-        return redirect("dashboard")->withSuccess("Book successfully returned." . $borrowedBook);
+        return redirect("dashboard")->withSuccess("Book successfully returned.");
     }
 
 

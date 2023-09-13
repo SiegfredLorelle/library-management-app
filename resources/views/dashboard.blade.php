@@ -74,16 +74,29 @@
                             <td>{{ $book->publication_date }}</td>
                             
                             @if (auth()->user()->user_level == "lvl-3")
-                                @if ($book->inventory_count > 0)
-                                    <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#borrow{{ $i }}">Borrow Book</button></td>
-                                @else
+                                @if ($book->inventory_count <= 0)
                                     <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#borrow{{ $i }}" disabled>Out of Stock</button></td>
+                                    {{-- @break --}}
+                                @else
+                                    <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#borrow{{ $i }}">Borrow Book</button></td>
                                 @endif
-                                {{ $repeat = false }}
+
+                                {{ $isBorrowed = false }}
+                                @foreach ($borrowedBooks as $borrowedBook)
+                                    @if ($borrowedBook->book_id == $book->id && $borrowedBook->borrower_id == auth()->user()->id)
+                                        <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}">Return Book</button></td>
+                                        {{ $isBorrowed = true }}
+                                        @break
+                                    @endif
+                                @endforeach
+                                {{-- @if (!$isBorrowed)
+                                    <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#borrow{{ $i }}">Currently Borrowed</button></td>
+                                @endif --}}
+                                {{ $isBorrowed = false }}
                                 @foreach ($borrowedBooks as $borrowedBook)
                                     @if ($borrowedBook->book_id == $book->id)
-                                        <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}">Return Book</button></td>
-                                        {{ $repeat = true }}
+                                        {{-- <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}">Return Book</button></td> --}}
+                                        {{ $isBorrowed = true }}
                                         
                                         <form method="POST" action="{{ route("returnbook.post", $borrowedBook->id) }}">
                                             @csrf
@@ -106,11 +119,9 @@
                                             </div>
                                         </form>
                                         @break
-
                                     @endif
-
                                 @endforeach
-                                @if (!$repeat)
+                                @if (!$isBorrowed)
                                     <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}" disabled>Not Borrowed</button></td>
                                 @endif
 
