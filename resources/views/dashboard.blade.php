@@ -84,11 +84,34 @@
                                     @if ($borrowedBook->book_id == $book->id)
                                         <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}">Return Book</button></td>
                                         {{ $repeat = true }}
+                                        
+                                        <form method="POST" action="{{ route("returnbook.post", $borrowedBook->id) }}">
+                                            @csrf
+                                            <div class="modal fade" id="return{{ $i }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Return Book</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body delete-warning-modal">
+                                                            Are you sure you want to return "{{ $book->title }}" by {{ $book->author }}?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-warning">Return</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                         @break
+
                                     @endif
+
                                 @endforeach
                                 @if (!$repeat)
-                                    <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}" disabled>Return Book</button></td>
+                                    <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}" disabled>Not Borrowed</button></td>
                                 @endif
 
                     
@@ -118,26 +141,7 @@
                                 </div>
                             </form>
                             
-                            <form method="POST" action="{{ route("borrowbook.post", $book->id) }}">
-                                @csrf
-                                <div class="modal fade" id="return{{ $i }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Return Book</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body delete-warning-modal">
-                                                Are you sure you want to return "{{ $book->title }}" by {{ $book->author }}?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
-                                                <button type="submit" class="btn btn-warning">Return</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+
 
 
                             @if (auth()->user()->user_level == "lvl-3")

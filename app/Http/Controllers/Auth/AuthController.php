@@ -181,7 +181,19 @@ class AuthController extends Controller
 
         $formattedDeadline = Carbon::parse($deadline)->format('M d, Y, D');
         return redirect("dashboard")->withSuccess("Book successfully borrowed. Return it before $formattedDeadline.");
+    }
 
+    public function returnBook(Request $request, int $book_id)
+    {
+        $borrowedBook = BorrowedBooks::findOrFail($book_id); 
+        $book = Book::findOrFail($borrowedBook->book_id);
+
+        $book->inventory_count++;
+
+        $borrowedBook->delete();
+        $book->save();
+
+        return redirect("dashboard")->withSuccess("Book successfully returned." . $borrowedBook);
     }
 
 
