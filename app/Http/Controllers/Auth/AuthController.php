@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Book;
+use App\Models\BorrowedBooks;
 use Session;
+use Illuminate\Support\Carbon;
 
 
 class AuthController extends Controller
@@ -148,8 +150,30 @@ class AuthController extends Controller
     {
         $book = Book::findOrFail($id);
         $book->delete();
-        // return redirect("dashboard")->withSuccess("Book edited!");
         return redirect("dashboard")->withSuccess("Book deleted!");
+    }
+
+    public function borrowBook(Request $request, int $book_id)
+    {
+        $book_id = Book::findOrFail($book_id)->id;
+        $user_id = Auth::user()->id;
+
+
+        $currentDateTime = Carbon::now()->toDateTimeString();
+        $deadline = Carbon::now()->addDays(7)->toDateTimeString();
+
+        $borrowedBook = new BorrowedBooks;
+        $borrowedBook->book_id = $book_id;
+        $borrowedBook->borrower_id = $user_id;
+        $borrowedBook->borrowed_at = $currentDateTime;
+        $borrowedBook->deadline = $deadline;
+        $borrowedBook->is_overdue = FALSE;
+
+
+        $borrowedBook->save();
+
+        $formattedDeadline = Carbon::parse($deadline)->format('M d, Y, D');
+        return redirect("dashboard")->withSuccess("Book successfully borrowed. Return it before $formattedDeadline.");
     }
 
 

@@ -84,7 +84,7 @@
                             @else
                                 <td>{{ $book->inventory_count }}</td>
                             @endif
-                            <!-- Modal for borrowing book -->
+                            {{-- <!-- Modal for borrowing book -->
                             <div class="modal fade" id="borrow{{ $i }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -93,15 +93,39 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body delete-warning-modal">
-                                            Are you sure you want to borrow "{{ $book->title }}" by {{ $book->author }}?
+                                            Are you sure you want to borrow "{{ $book->title }}" by {{ $book->author }}?<br><br>
+                                            Borrowed book must be returned within 1 week.
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-danger">Borrow</button>
+                                            <button type="submit" class="btn btn-warning">Borrow</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
+
+                            <form method="POST" action="{{ route("borrowbook.post", $book->id) }}">
+                                @csrf
+                                <div class="modal fade" id="borrow{{ $i }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Borrow Book</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body delete-warning-modal">
+                                                Are you sure you want to borrow "{{ $book->title }}" by {{ $book->author }}?<br><br>
+                                                Borrowed book must be returned within 1 week.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-warning">Borrow</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
 
                             @if (auth()->user()->user_level == "lvl-3")
                             @elseif (auth()->user()->user_level == "lvl-2")
