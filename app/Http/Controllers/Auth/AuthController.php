@@ -10,6 +10,7 @@ use App\Models\Book;
 use App\Models\BorrowedBooks;
 use Session;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 class AuthController extends Controller
@@ -155,25 +156,28 @@ class AuthController extends Controller
 
     public function borrowBook(Request $request, int $book_id)
     {
-        $book_id = Book::findOrFail($book_id)->id;
-        $user_id = Auth::user()->id;
+        $book = Book::findOrFail($book_id);
+        $user = Auth::user();
 
+        if (DB::table("borrowed_books")->where("borrower_id", $user->id)->where("book_id", $book->id)->exists()) {
+            return redirect("dashboard")->withErrors("You already borrowed '$book->title' by $book->author.");
+        }
 
         $currentDateTime = Carbon::now()->toDateTimeString();
         $deadline = Carbon::now()->addDays(7)->toDateTimeString();
 
         $borrowedBook = new BorrowedBooks;
-        $borrowedBook->book_id = $book_id;
-        $borrowedBook->borrower_id = $user_id;
+        $borrowedBook->book_id = $book->id;
+        $borrowedBook->borrower_id = $user->id;
         $borrowedBook->borrowed_at = $currentDateTime;
         $borrowedBook->deadline = $deadline;
         $borrowedBook->is_overdue = FALSE;
-
 
         $borrowedBook->save();
 
         $formattedDeadline = Carbon::parse($deadline)->format('M d, Y, D');
         return redirect("dashboard")->withSuccess("Book successfully borrowed. Return it before $formattedDeadline.");
+
     }
 
 
