@@ -76,33 +76,25 @@
                             @if (auth()->user()->user_level == "lvl-3")
                                 @if ($book->inventory_count > 0)
                                     <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#borrow{{ $i }}">Borrow Book</button></td>
-
                                 @else
-                                    <td scope="col"><button type="submit" class="btn btn-dark" disabled data-bs-toggle="modal" data-bs-target="#borrow{{ $i }}">Out of Stock</button></td>
+                                    <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#borrow{{ $i }}" disabled>Out of Stock</button></td>
                                 @endif
+                                {{ $repeat = false }}
+                                @foreach ($borrowedBooks as $borrowedBook)
+                                    @if ($borrowedBook->book_id == $book->id)
+                                        <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}">Return Book</button></td>
+                                        {{ $repeat = true }}
+                                        @break
+                                    @endif
+                                @endforeach
+                                @if (!$repeat)
+                                    <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}" disabled>Return Book</button></td>
+                                @endif
+
                     
                             @else
                                 <td>{{ $book->inventory_count }}</td>
                             @endif
-                            {{-- <!-- Modal for borrowing book -->
-                            <div class="modal fade" id="borrow{{ $i }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Borrow Book</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body delete-warning-modal">
-                                            Are you sure you want to borrow "{{ $book->title }}" by {{ $book->author }}?<br><br>
-                                            Borrowed book must be returned within 1 week.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-warning">Borrow</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
 
                             <form method="POST" action="{{ route("borrowbook.post", $book->id) }}">
                                 @csrf
@@ -120,6 +112,27 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
                                                 <button type="submit" class="btn btn-warning">Borrow</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            <form method="POST" action="{{ route("borrowbook.post", $book->id) }}">
+                                @csrf
+                                <div class="modal fade" id="return{{ $i }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Return Book</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body delete-warning-modal">
+                                                Are you sure you want to return "{{ $book->title }}" by {{ $book->author }}?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-warning">Return</button>
                                             </div>
                                         </div>
                                     </div>

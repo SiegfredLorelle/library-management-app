@@ -84,7 +84,8 @@ class AuthController extends Controller
     {
         if(Auth::check()) {
             $books = Book::orderby("title")->get();
-            return view("dashboard", ["books" => $books]);
+            $borrowedBooks = BorrowedBooks::orderby("id")->get();
+            return view("dashboard", ["books" => $books, "borrowedBooks" => $borrowedBooks]);
         }
         else {
             return redirect("login")->withErrors("Login to access the dashboard.");
@@ -173,6 +174,9 @@ class AuthController extends Controller
         $borrowedBook->deadline = $deadline;
         $borrowedBook->is_overdue = FALSE;
 
+        $book->inventory_count--;
+
+        $book->save();
         $borrowedBook->save();
 
         $formattedDeadline = Carbon::parse($deadline)->format('M d, Y, D');
