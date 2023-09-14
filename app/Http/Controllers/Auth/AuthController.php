@@ -92,10 +92,13 @@ class AuthController extends Controller
         }
     }
 
-    // public function bookAdd() 
-    // {
-        
-    // }
+    public function transactions() 
+    {
+        $books = Book::orderby("title")->get();
+        $borrowedBooks = BorrowedBooks::orderby("id")->get();
+        $users = User::orderby("id")->get();
+        return view("transactions", ["books" => $books, "borrowedBooks" => $borrowedBooks, "users" => $users]);
+    }
 
     public function postAddBook(Request $request)
     {

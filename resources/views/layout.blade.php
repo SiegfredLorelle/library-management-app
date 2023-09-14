@@ -84,6 +84,9 @@
                     </li>
                     @endif
                     <li class="nav-item">
+                      <a class="nav-link" href="{{ url("/transactions") }}">Pending Transactions</a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link" href="{{ url("/logout") }}">Log Out</a>
                     </li>
                 @endguest

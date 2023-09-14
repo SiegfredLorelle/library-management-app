@@ -34,6 +34,7 @@ Route::delete("/delete-book/{id}", [AuthController::class, "deleteBook"])->name(
 Route::post("/post-borrow-book/{id}", [AuthController::class, "borrowBook"])->name("borrowbook.post");
 Route::post("/post-return-book/{id}", [AuthController::class, "returnBook"])->name("returnbook.post");
 Route::get("/admin", [AuthController::class, "admin"])->name("admin");
+Route::get("/transactions", [AuthController::class, "transactions"])->name("transactions");
 // Route::get("/edit-user/{id}", [AuthController::class, "editUser"])->name("edituser");
 Route::post("/post-edit-user/{id}", [AuthController::class, "postEditUser"])->name("edituser.post");
 Route::delete("/delete-user/{id}", [AuthController::class, "deleteUser"])->name("deleteuser");
