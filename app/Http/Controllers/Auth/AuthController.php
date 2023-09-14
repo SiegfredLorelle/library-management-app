@@ -103,7 +103,8 @@ class AuthController extends Controller
             "title" => "required",
             "author" => "required",
             "publication_company" => "required",
-            "publication_date" => "required|before:tomorrow"
+            "publication_date" => "required|before:tomorrow",
+            "inventory_count" => "required|min:0"
         ]);
 
         $book = new Book;
@@ -111,7 +112,7 @@ class AuthController extends Controller
         $book->author = $request->author;
         $book->publication_company = $request->publication_company;
         $book->publication_date = $request->publication_date;
-        $book->inventory_count = 1;
+        $book->inventory_count = $request->inventory_count;
 
         $book->save();
         return redirect("dashboard")->withSuccess("Book added!");
@@ -137,7 +138,8 @@ class AuthController extends Controller
             "title" => "required",
             "author" => "required", 
             "publication_company" => "required",
-            'publication_date' => 'required|before:tomorrow'
+            'publication_date' => 'required|before:tomorrow',
+            "inventory_count" => "required|min:0"
         ]);
 
         $book = Book::findOrFail($id);
