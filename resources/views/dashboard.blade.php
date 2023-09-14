@@ -85,18 +85,20 @@
                                 @foreach ($borrowedBooks as $borrowedBook)
                                     @if ($borrowedBook->book_id == $book->id && $borrowedBook->borrower_id == auth()->user()->id)
                                         <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}">Return Book</button></td>
-                                        {{ $isBorrowed = true }}
+                                        {{-- {{ $isBorrowed = true }} --}}
+                                        <p class="d-none">{{ $isBorrowed = true }}</p>
                                         @break
                                     @endif
                                 @endforeach
                                 {{-- @if (!$isBorrowed)
                                     <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#borrow{{ $i }}">Currently Borrowed</button></td>
                                 @endif --}}
-                                {{ $isBorrowed = false }}
+                                {{-- {{ $isBorrowed = false }} --}}
+                                <p class="d-none">{{ $isBorrowed = false }}</p>
                                 @foreach ($borrowedBooks as $borrowedBook)
-                                    @if ($borrowedBook->book_id == $book->id)
+                                    @if ($borrowedBook->book_id == $book->id && auth()->user()->id == $borrowedBook->borrower_id)
                                         {{-- <td scope="col"><button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#return{{ $i }}">Return Book</button></td> --}}
-                                        {{ $isBorrowed = true }}
+                                        <p class="d-none">{{ $isBorrowed = true }}</p>
                                         
                                         <form method="POST" action="{{ route("returnbook.post", $borrowedBook->id) }}">
                                             @csrf
