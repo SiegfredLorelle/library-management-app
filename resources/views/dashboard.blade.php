@@ -251,6 +251,12 @@
                                                             <input type="date" class="form-control" id="publication_date" name="publication_date" max="9999-12-31" required value="{{ $book->publication_date }}">
                                                         </div>
                                                     </div>
+                                                    <div class="mb-3 mt-3 row">
+                                                        <label for="inventory stocks" class="col-sm-4 col-form-label">Inventory Count</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="number" class="form-control" id="inventory count" name="inventory_count" min="0" required value="{{ $book->inventory_count }}">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
