@@ -29,7 +29,7 @@
     <div class="container-fluid d-flex flex-column mt-5">
 
         <table class="table table-hover">
-            {{-- <thead>
+            <thead>
                 <tr>
                     <th scope="col">Borrowed by</th>
                     <th scope="col">Title</th>
@@ -37,7 +37,7 @@
                     <th scope="col">Deadline</th>
                     <th scope="col">Time Before Deadline</th>
                 </tr>
-            </thead> --}}
+            </thead>
             <tbody class="table-group-divider">
                 @foreach ($borrowedBooks as $borrowedBook)
                     <tr>
@@ -54,7 +54,12 @@
                                 <td>{{ $book->title }}</td>
                                 <td>{{ $book->author }}</td>
                                 <td>{{ $borrowedBook->deadline }}</td>
-                                <td>{{ \Carbon\Carbon::parse($borrowedBook->deadline)->diffForHumans() }}</td>
+                                <span class="d-none">{{ $borrowedBook->deadline = \Carbon\Carbon::parse($borrowedBook->deadline) }}</span>
+                                @if ($borrowedBook->deadline->lt(\Carbon\Carbon::now()))
+                                    <td>Overdue</td>
+                                @else
+                                    <td>{{ $borrowedBook->deadline->diffForHumans() }}</td>
+                                @endif
                                 @break
                             @endif
                         @endforeach
