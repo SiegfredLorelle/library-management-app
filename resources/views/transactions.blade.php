@@ -39,13 +39,11 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @if (auth()->user()->user_level == "lvl-3")
-
-                @else
                     @foreach ($borrowedBooks as $borrowedBook)
                         <tr>
                             @foreach ($books as $book)
-                                @if ($book->id == $borrowedBook->book_id)
+                                {{-- Ensure that regular user (lvl 3) can only see their own pending transactions while admins (lvl 0-2) can view all transactiosn from all accounts --}}
+                                @if ((auth()->user()->user_level != "lvl-3" || auth()->user()->id == $borrowedBook->borrower_id) && $book->id == $borrowedBook->book_id)
                                     <td>
                                         @foreach ($users as $user)
                                             @if ($borrowedBook->borrower_id == $user->id)
@@ -62,7 +60,6 @@
                             @endforeach
                         </tr>
 `                   @endforeach
-                @endif
             </tbody>
         </table>
 
